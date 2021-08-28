@@ -8,7 +8,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'flag-icon-css/css/flag-icon.min.css';
-// import './index.css';
+import './index.css';
 import App from './App';
 
 
@@ -27,7 +27,6 @@ i18n
       loadPath: '/assets/locales/{{lng}}/translation.json',
     },
     react: {useSuspense: false},
-
   });
 
 
@@ -37,8 +36,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 
