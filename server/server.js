@@ -5,11 +5,23 @@ const cors = require('cors');
 const db = require('./db');
 
 const app = express();
+
+//middleware
 app.use(morgan("dev"));
+app.use(express.json());
 app.use(cors());
 
 const posts = require('./routes/posts');
+const groups = require('./routes/groups')
 
-app.use('/devcommunity', posts());
+app.use('/posts', posts(db));
+//app.use('/devcommunity/groups', groups(db));
+
+app.get("/", (req, res) => {
+  
+    res.send("ok");
+    //res.json(data);
+  });
+
 
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
