@@ -12,10 +12,12 @@ app.use(express.json());
 app.use(cors());
 
 const posts = require('./routes/posts');
+const users = require('./routes/users')
 const groups = require('./routes/groups')
 
 app.use('/posts', posts(db));
-//app.use('/devcommunity/groups', groups(db));
+app.use('/users', users(db));
+app.use('/groups', groups(db));
 
 app.get("/", (req, res) => {
   

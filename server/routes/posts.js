@@ -2,15 +2,18 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
-  router.get('/', (req, res) => {
-    res.send("ok");
-    //res.json(data);
-  });
+  //get all posts
+  // router.get('/', (req, res) => {
+  //   db.query(`SELECT * FROM posts LIMIT 4;`)
+  //   .then(data => {
+  //     res.json(data.rows);
+  //   });
+  // });
   //create new post
   router.post("/", async (req, res) => {
     try {
       const newPost = await db.query(
-        "INSERT INTO posts (content, user_id, photo, created_at) values($1, $2, $3, $4) returning*;", [req.body.content, req.session.user_id, req.body.photo, req.body.created_at]
+        "INSERT INTO posts (content, user_id, photo) values($1, $2, $3) returning*;", [req.body.content, req.body.user_id, req.body.photo]
       );
       res.status(201).json({
         data: {post: newPost.rows[0]}
@@ -23,9 +26,9 @@ module.exports = (db) => {
   //update a post
   router.put("/:id", (req, res) => {
     const content = req.body.content;
-    const user_id = req.session.user_id
+    const user_id = req.body.user_id
     const photo = req.body.photo
-    const post_id = req.body.id
+    const post_id = req.params.id
     
     db.query(`
       UPDATE posts SET
@@ -46,13 +49,13 @@ module.exports = (db) => {
 
   
   //delete a post
-  //router.post("/:id/delete", (req, res) => {)
-  router.delete("/:id", (req, res) => {
-    const user_id = req.session.user_id;
-    const post_id = parseInt(req.params.id);
+  
+  router.delete("/:id/delete", (req, res) => {
+    
+    const post_id = req.params.id;
     db.query(`DELETE FROM posts WHERE id = $1`, [post_id])
     .then(
-      res.redirect("/")
+      res.send("deleted")
     )
     .catch(err => {
       res
@@ -62,13 +65,15 @@ module.exports = (db) => {
   });
 
 //get timeline posts
-router.get("/", (req, res) => {
-  
-  db.query(`SELECT * users FROM friends`, [post_id])
-  .then(
-    res.redirect("/")
+router.get("/user/:id", (req, res) => {
+  const userId = req.params.id;
+  db.query(`SELECT * FROM posts WHERE user_id = $1 OR user_id IN (SELECT DISTINCT user2_id FROM friends WHERE user1_id = $2) `, [userId, userId])
+  .then(data => {
+    res.json(data.rows);
+  }
   )
   .catch(err => {
+    console.log('/posts/user', err.message)
     res
       .status(500)
       .json({ error: err.message });
