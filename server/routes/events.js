@@ -4,7 +4,7 @@ const router  = express.Router();
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const postId = req.params.id;
-    db.query(`SELECT * FROM events ORDER BY id desc;`)
+    db.query(`SELECT * FROM events ORDER BY date desc;`)
     .then(data => {
       res.json(data.rows);
     });
@@ -12,7 +12,7 @@ module.exports = (db) => {
 
   //filter events by category
   router.get("/filter", (req, res) => {
-    db.query(`SELECT * FROM events JOIN categories ON categories.id = events.category_id  WHERE topic = $1;`, [req.body.topic])
+    db.query(`SELECT * FROM events JOIN categories ON categories.id = category_id  WHERE topic = $1 ORDER BY date desc;`, [req.body.topic])
     .then(data => {
       res.json(data.rows);
     })
