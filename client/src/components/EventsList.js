@@ -1,23 +1,33 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Devcommunity from '../apis/Devcommunity';
 import { EventsContext } from '../context/EventsContext';
 
 const EventsList = (props) => {
-  const {events, setEvents} = useContext(EventsContext)
-  useEffect(async() => {
-    const fetchData = async () => {
-      try {
-        const response = await Devcommunity.get("/events");
-        setEvents(response.data);
-      } catch(err) {}
-    }
-    fetchData();
-  }, [])
+  const [events, setEvents] = useState([])
+  useEffect(async () => {
 
+    try {
+      const response = await Devcommunity.get("/events");
+      console.log(response.data)
+      setEvents(response.data);
+      console.log('events------', events)
+    } catch (err) {
+      console.log('error-----', err)
+    }
+
+
+  }, [])
+  // return (
+
+  // <div>
+  //   {events.map(elem => (<h1>{elem.description}</h1>))}
+  // </div>
+
+  // )
   return (
     <div>
-   
-      
+
+
       <div className="list-group">
         <table className="table table-hover table-dark">
           <thead>
@@ -28,33 +38,32 @@ const EventsList = (props) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <img src="https://www.designyourway.net/blog/wp-content/uploads/2018/08/387011_3d-cute-wallpapers-for-desktop-hd-1-jpg_1024x768_h-700x525.jpg" class="img-fluid" alt="Responsive image"></img>
-                <h3>Kitties Gathering</h3>
-              </td>
 
-              <td>Join us for a fun day with kitties from all over ottawa! Meet your new friends and family</td>
-              <td>
-                2021-10-23
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img src="https://www.designyourway.net/blog/wp-content/uploads/2018/08/387011_3d-cute-wallpapers-for-desktop-hd-1-jpg_1024x768_h-700x525.jpg" class="img-fluid" alt="Responsive image"></img>
-                <h3>Kitties Gathering</h3>
-              </td>
+            {events.map(elem => (
+              <>
+                <tr>
+                  <td>
+                  <img src={elem.photo} className="img-fluid" alt="Responsive image"></img>
+                    {elem.name}
+                  </td>
+                  <td>
+                    {elem.description}
+                  </td>
+                  <td>
+                    {elem.date}
+                  </td>
+                </tr>
 
-              <td>Join us for a fun day with kitties from all over ottawa! Meet your new friends and family</td>
-              <td>
-                2021-10-23
-              </td>
+              </>
+            ))}
+            <tr>
+
             </tr>
           </tbody>
         </table>
       </div>
 
-     
+
     </div>
   )
 }
