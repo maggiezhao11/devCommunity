@@ -13,11 +13,13 @@ app.use(cors());
 
 const posts = require('./routes/posts');
 const users = require('./routes/users')
-const groups = require('./routes/groups')
+const groups = require('./routes/groups');
+const events = require('./routes/events')
 
 app.use('/posts', posts(db));
 app.use('/users', users(db));
 app.use('/groups', groups(db));
+app.use('/events', events(db));
 
 app.get("/", (req, res) => {
   
