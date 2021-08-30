@@ -7,7 +7,7 @@ const FilterButton = () => {
       <div className="col">
         <h4>Filter: </h4>
         <select className="custom-select my-1 mr-sm-2">
-          <option disabled placeholder="disabled">Category</option>
+          <option disabled placeholder="Category">Category</option>
           <option value="technology">Technology</option>
           <option value="travel & outdoor">Travel & Outdoor</option>
           <option value="parents & family">Parents & Family</option>

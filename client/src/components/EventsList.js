@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import Devcommunity from '../apis/Devcommunity';
+import { EventsContext } from '../context/EventsContext';
 
+const EventsList = (props) => {
+  const {events, setEvents} = useContext(EventsContext)
+  useEffect(async() => {
+    const fetchData = async () => {
+      try {
+        const response = await Devcommunity.get("/events");
+        setEvents(response.data);
+      } catch(err) {}
+    }
+    fetchData();
+  }, [])
 
-const EventsList = () => {
   return (
     <div>
    
