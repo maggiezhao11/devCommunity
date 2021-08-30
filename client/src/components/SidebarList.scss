@@ -35,6 +35,9 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  // &>div{
+    // width: auto;
+  // }
 
 }
 
@@ -43,7 +46,15 @@ body {
   background-color: salmon;
 }
 
-.SidebarList #active {
+.SidebarList .active .row {
   background-color: plum;
 }
 
+.sidebar_link {
+  color: white;
+  text-decoration: none;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  };
+}

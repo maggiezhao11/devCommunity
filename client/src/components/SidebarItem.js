@@ -1,15 +1,16 @@
 import React from "react";
-import "components/SidebarItem.scss";
+import "./SidebarItem.scss";
+import { NavLink } from 'react-router-dom';
 
-export default function InterviewerListItem(props) {
+export default function SidebarItem(props) {
   const { title, icon, link} = props;
 
   return (
+    <NavLink activeClassName="active" className="sidebar_link" to ={link}>
     <li className="row" > 
-        <Link to ={link}>
-          <div id="title">{title}</div>
-        </Link>
+        <div id="title">{title}</div>
         <div id='icon'>{icon}</div> 
     </li>
+    </NavLink>
   );
 }

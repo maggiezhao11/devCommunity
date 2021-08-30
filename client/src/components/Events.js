@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Meets() {
+function Events() {
   return (
     <div>
       <h1>EVENT! </h1>
@@ -8,4 +8,4 @@ function Meets() {
   )
 }
 
-export default Meets
+export default Events

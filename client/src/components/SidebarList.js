@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
 import "./SidebarList.scss";
 import ChatIcon from '@material-ui/icons/Chat';
 import HomeIcon from '@material-ui/icons/Home';
 import EventIcon from '@material-ui/icons/Event';
 import GroupIcon from '@material-ui/icons/Group';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+import SidebarItem from './SidebarItem';
 
 const SidebarData = [
   {
@@ -33,22 +33,30 @@ const SidebarData = [
 
 
 function SidebarList() {
-  const { path } =useRouteMatch();
+
+  const list = SidebarData.map((item, key) => {
+    return <SidebarItem
+    key={key}
+    icon={item.icon}
+    title={item.title}
+    link={item.link}
+    />
+  })
 
   return (
     <div className="Sidebar">
       <ul className="SidebarList">
-        {SidebarData.map((val, key) => {
+          {list}
+        {/* {SidebarData.map((val, key) => {
           return (
-          <li key={key} className="row" id={ path === val.link ? "active" : ""} > 
-            <div id='icon'>{val.icon}</div> 
-            <Link to ={val.link}>
-              <div id="title">{val.title}</div>
-            </Link>
-
+          <NavLink activeClassName="active" className="sidebar_link" to ={val.link}>
+          <li key={key} className="row"> 
+           <div className='icon'>{val.icon}</div> 
+            <div className="title">{val.title}</div> 
           </li>
-          );
-        })} 
+          </NavLink>
+          )
+        })}  */}
          <li
               className="row"
               //chat onClick is for later toggle chat popup window
