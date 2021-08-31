@@ -1,10 +1,32 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = () => {
-  router.get('/groups', (req, res) => {
-    res.send("ok");
-    //res.json(data);
+module.exports = (db) => {
+  router.get("/", (req, res) => {
+    const postId = req.params.id;
+    db.query(`SELECT * FROM groups ORDER BY id desc;`)
+    .then(data => {
+      res.json(data.rows);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+  });
+
+  //filter groups by category
+  router.get("/filter", (req, res) => {
+    db.query(`SELECT * FROM groups JOIN categories ON categories.id = category_id  WHERE topic = $1;`, [req.body.topic])
+    .then(data => {
+      res.json(data.rows);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
   })
+
   return router;
 }
