@@ -5,8 +5,8 @@ import Welcome from './components/Welcome';
 // import SidebarList from './components/SidebarList';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
-import Groups from './components/Groups';
-import Events from './components/Events';
+import Groups from "./routes/Groups";
+import Events from "./routes/Events";
 import Friends from './components/Friends';
 import Posts from './components/Posts';
 import Login from './components/Login';
@@ -25,6 +25,17 @@ useEffect(() => {
        return res.data.id 
     });
 }, []);
+
+
+// function App() {
+
+//   // useEffect(() => {
+//   //   axios.get('http://localhost:3002/posts/user/2')
+//   //     .then(res => {
+//   //       console.log("It is working");
+//   //       console.log(res);
+//   //     });
+//   // }, []);
 
 
 
@@ -81,13 +92,9 @@ useEffect(() => {
               {/* //loading information */}
             </Route>
 
-            <Route path="/groups">
-              <Groups />
-            </Route>
+            <Route exact path="/groups" component={Groups} />
 
-            <Route path="/Events">
-              <Events/>
-            </Route>
+            <Route exact path="/events" component={Events} />
 
             <Route path="/friends">
               <Friends user={user}/>
@@ -96,6 +103,7 @@ useEffect(() => {
           </Switch>
       </Router>
     </div>
+   
   );
 }
 

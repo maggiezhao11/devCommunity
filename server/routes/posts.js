@@ -13,7 +13,6 @@ module.exports = (db) => {
         "INSERT INTO posts (content, user_id, photo) values($1, $2, $3) RETURNING * ;", [content, user_id, photo]
       )
       .then(data => {
-        console.log("data:", data);
         res.json(data.rows[0]);
       })
       .catch(err => {
