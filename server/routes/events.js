@@ -11,7 +11,7 @@ module.exports = (db) => {
   });
 
   //filter events by category
-  router.get("/filter", (req, res) => {
+  router.post("/filter", (req, res) => {
     db.query(`SELECT * FROM events JOIN categories ON categories.id = events.category_id  WHERE topic = $1;`, [req.body.topic])
     .then(data => {
       res.json(data.rows);
