@@ -17,7 +17,7 @@ module.exports = (db) => {
 
   //filter groups by category
   router.get("/filter", (req, res) => {
-    db.query(`SELECT * FROM groups JOIN categories ON categories.id = groups.category_id  WHERE topic = $1;`, ['req.body.topic'])
+    db.query(`SELECT * FROM groups JOIN categories ON categories.id = category_id  WHERE topic = $1;`, [req.body.topic])
     .then(data => {
       res.json(data.rows);
     })

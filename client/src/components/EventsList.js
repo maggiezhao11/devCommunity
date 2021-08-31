@@ -1,13 +1,19 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Devcommunity from '../apis/Devcommunity';
-import { EventsContext } from '../context/EventsContext';
+
 
 const EventsList = (props) => {
-  const {events, setEvents} = useContext(EventsContext)
+  const [events, setEvents] = useState([]);
+  const {filter} = props;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await Devcommunity.get("/events");
+        let response
+        if (filter) {
+           response = await Devcommunity.post("/events/filter", {topic: filter});
+        } else {
+          response = await Devcommunity.get("/events");
+        }
         
         setEvents(response.data);
         
@@ -16,7 +22,7 @@ const EventsList = (props) => {
       }
     }
     fetchData();
-  }, [])
+  }, [filter])
   
   return (
     <div>

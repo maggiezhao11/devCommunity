@@ -7,7 +7,7 @@ import Groups from "./routes/Groups";
 import GroupsFilter from "./routes/GroupsFilter";
 import Events from "./routes/Events";
 import EventsFilter from "./routes/EventsFilter";
-import { EventsContextProvider } from './context/EventsContext';
+
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
   // }, []);
 
   return (
-    <EventsContextProvider>
+   
       <div className="container">
 
         <Router>
@@ -34,7 +34,7 @@ function App() {
 
 
       </div>
-    </EventsContextProvider>
+    
 
   );
 }
