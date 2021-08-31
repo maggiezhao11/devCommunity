@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import GroupsList from '../components/GroupsList';
+import GroupsFilter from '../components/GroupsFilter';
 
 const Groups = () => {
+  const [filter, setFilter] = useState("");
   return (
     <div>
-      Groups
+      <GroupsFilter filter={filter} setFilter={setFilter}/>
+      <GroupsList filter={filter}/>
     </div>
   )
 }
