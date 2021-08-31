@@ -4,15 +4,15 @@ const router = express.Router();
 module.exports = (db) => {
  
   //create new post by user
-  router.post("/", async (req, res) => {
+  router.post("/", (req, res) => {
     const content = req.body.content;
-    const user_id = req.session.user_id;
+    const user_id = req.body.user_id;
     const photo = req.body.photo;
     db.query(
         "INSERT INTO posts (content, user_id, photo) values($1, $2, $3) returning*;", [content, user_id, photo]
       )
       .then(data => {
-        res.json(data.rows);
+        res.json(data.rows[0]);
       })
       .catch(err => {
         res
