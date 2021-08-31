@@ -1,26 +1,18 @@
 import React, { useState, useContext } from 'react';
 import Devcommunity from '../apis/Devcommunity';
-import { EventsContext } from '../context/EventsContext';
 
-const FilterButton = () => {
-  
-  const [filter, setFilter] = useState("Topic");
+
+const FilterButton = (props) => {
+  const {filter, setFilter} = props;
+  const [option, setOption] = useState(filter || "")
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    //console.log(e.target.value)
-    try {
-      const response = await Devcommunity.post("/events/filter", {
-        topic: filter
-      })
-      
-    } catch (err) {
-
-    }
+    setFilter(option)
   }
-const handleChange = (e) => {
-  console.log(e.target.value)
-  setFilter(e.target.value);
+  const handleChange = (e) => {
+  
+    setOption(e.target.value);
 
 }
 
@@ -31,7 +23,7 @@ const handleChange = (e) => {
         <h4>Filter: </h4>
         <form>
           <select className="custom-select my-1 mr-sm-2" onChange={handleChange}>
-            <option disabled placeholder="Topic">Topic</option>
+            <option disabled>Topic</option>
             <option value="technology">Technology</option>
             <option value="travel & outdoor">Travel & Outdoor</option>
             <option value="parents & family">Parents & Family</option>
