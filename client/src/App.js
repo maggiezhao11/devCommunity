@@ -1,30 +1,30 @@
-
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Welcome from './components/Welcome';
-import SidebarList from './components/SidebarList';
+// import SidebarList from './components/SidebarList';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Groups from './components/Groups';
 import Events from './components/Events';
 import Friends from './components/Friends';
 import Posts from './components/Posts';
+import Login from './components/Login';
+// import Nav from './components/Nav';
 
 function App() {
-const [state, setState] = useState({
-  posts: [],
-});
+
+const [user, setUser] = useState(null);
 
 useEffect(() => {
-  axios.get('http://localhost:3002/posts')
-  .then(res => {
-    console.log("It is working");
-    console.log(res);
-    setState(prev => ({...prev, posts:res.data}))
-  });
-}, []);
 
+  axios.post('http://localhost:3002/login', {email: 'eliza.wong@gmail.com'})   
+    .then(res => { 
+       setUser(res.data)
+       console.log("line30:", res.data);  
+       return res.data.id 
+    });
+}, []);
 
 
 
@@ -63,16 +63,22 @@ useEffect(() => {
   return (
     <div className="App">
       <Router>
-      <SidebarList />
+      {/* <Nav />
+      <SidebarList /> */}
     
           <Switch>
             <Route exact path="/">
             <Welcome />
             </Route>
 
+            <Route exact path="/login">
+            <Login />
+            </Route>
+
             <Route path="/home">
               <Home />
-              <Posts />
+              <Posts user={user} />
+              {/* //loading information */}
             </Route>
 
             <Route path="/groups">
@@ -84,7 +90,7 @@ useEffect(() => {
             </Route>
 
             <Route path="/friends">
-              <Friends />
+              <Friends user={user}/>
             </Route>
 
           </Switch>
