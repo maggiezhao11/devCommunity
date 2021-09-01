@@ -10,16 +10,12 @@ const EventsList = (props) => {
   
 
   const handleJoin = (elem) =>{
-    console.log('elem---', elem)
-    // axios.post("/events/join", { id: elem.id})
-    // .then(data => {
-    //   console.log('data------', data)
-    // })
+    //console.log('elem---', elem)
     
     return axios.post("/events/join", {id:elem.id})
     .then(data => {
       setUpcoming(prev => {   
-        console.log('-----', prev)
+       // console.log('-----', prev)
         const updatedEvents = [...prev, data.data[0]]   //get previous events, then set it to new event (data.data[0])
         return updatedEvents
         
@@ -28,9 +24,6 @@ const EventsList = (props) => {
     
   }
 
-  const changeText = function () {
-
-  }
 
   return (
     <div className="container">

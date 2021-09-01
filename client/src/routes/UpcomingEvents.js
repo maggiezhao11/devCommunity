@@ -6,7 +6,7 @@ const UpcomingEvents = (props) => {
   return (
     <div>
       <UpcomingEventsList upcoming={upcoming} setUpcoming={setUpcoming}/>
-      {/* upcoming={upcoming} setUpcoming={setUpcoming} */}
+    
       
     </div>
   )
