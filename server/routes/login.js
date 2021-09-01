@@ -12,9 +12,10 @@ module.exports = (db) => {
   router.post("/", async (req, res) => {
     const query = await db.query(`select * from users where users.email = $1;`, [req.body.email])
     console.log("line 22:", query.rows[0]);
+    req.session.user_id = query.rows[0].id;
         res.json(query.rows[0])
      
-    res.redirect('/');
+   // res.redirect('/');
   });
 
   return router;
