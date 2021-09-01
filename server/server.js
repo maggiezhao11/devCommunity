@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const cors = require('cors');
 const db = require('./db');
 
+
+
 const app = express();
 const cookieSession = require('cookie-session');
 app.use(cookieSession({
@@ -14,6 +16,7 @@ app.use(cookieSession({
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
+app.use(express.urlencoded())
 
 const posts = require('./routes/posts');
 const users = require('./routes/users')

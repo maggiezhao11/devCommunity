@@ -8,8 +8,9 @@ module.exports = (db) => {
     const content = req.body.content;
     const user_id = req.body.user_id;
     const photo = req.body.photo;
+    console.log("userID", req.body.user_id)
     db.query(
-        "INSERT INTO posts (content, user_id, photo) values($1, $2, $3) returning*;", [content, user_id, photo]
+        "INSERT INTO posts (content, user_id, photo) values($1, $2, $3) RETURNING * ;", [content, user_id, photo]
       )
       .then(data => {
         res.json(data.rows[0]);
@@ -64,7 +65,13 @@ module.exports = (db) => {
 
   //get timeline posts
   router.get("/", (req, res) => {
-    const userId = req.session.user_id;
+    // console.log("line67 request:", req);
+    // console.log("line68:", req.query.user_id);
+    // console.log("line69:", req.query);
+    // console.log("line70:", req.session.user_id);
+    let userId = req.query.user_id;
+    if (!userId) userId = req.session.user_id;
+
     db.query(`SELECT posts.*, users.first_name FROM posts JOIN users ON users.id = user_id WHERE user_id = $1 OR user_id IN (SELECT DISTINCT user2_id FROM friends WHERE user1_id = $2) ORDER BY id desc`, [userId, userId])
       .then(data => {
         res.json(data.rows);

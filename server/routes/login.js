@@ -8,5 +8,14 @@ module.exports = (db) => {
      
     res.redirect('/');
   });
+
+  router.post("/", async (req, res) => {
+    const query = await db.query(`select * from users where users.email = $1;`, [req.body.email])
+    console.log("line 22:", query.rows[0]);
+        res.json(query.rows[0])
+     
+    res.redirect('/');
+  });
+
   return router;
 }
