@@ -2,11 +2,14 @@ const PORT = 3002;
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const { Server } = require("socket.io");
 const db = require('./db');
 
 
 
+
 const app = express();
+const http = require("http");
 const cookieSession = require('cookie-session');
 app.use(cookieSession({
   name: 'session',
@@ -17,6 +20,37 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded())
+
+
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin:"http://localhost:3005",
+    methods: ["GET", "POST"],
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log(`user is connected: ${socket.id}`);
+  
+  socket.on("join_room", (data) => {
+    socket.join(data);
+    console.log(`user with ID: ${socket.id} joined room: ${data}`);
+
+    socket.on("send_message", (msg) => {
+      console.log(`received: ${msg}`)
+      socket.emit("receive_message", msg);
+      socket.to(data).emit("receive_message", msg);
+    });
+
+  });
+
+  socket.on("disconnect", () => {
+    console.log(`user is disconnected: ${socket.id}`)
+  });
+
+});
+
 
 const posts = require('./routes/posts');
 const users = require('./routes/users')
@@ -38,4 +72,5 @@ app.get("/", (req, res) => {
 
 
 
-app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+server.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
