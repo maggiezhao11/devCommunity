@@ -62,7 +62,7 @@ function SidebarList() {
               //chat onClick is for later toggle chat popup window
               onClick={()=> {}}
           > 
-            <div id='icon'><ChatIcon /></div> <div id="title">Chat</div>
+            <div id='icon'><ChatIcon /></div> <div id="title">Live Chat Room</div>
           </li>
       </ul>
     </div>

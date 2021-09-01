@@ -29,8 +29,8 @@ function addPost(post) {
         // hard coded url is only for test cases
         axios.get("http://localhost:3002/posts?user_id=1")
           .then(res => {
-            console.log("It is working");
-            console.log(res.data);
+            // console.log("It is working");
+            // console.log(res.data);
             setPosts(() => {
               return res.data;
             });

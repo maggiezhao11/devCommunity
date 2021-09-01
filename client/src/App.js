@@ -11,6 +11,8 @@ import Friends from './components/Friends';
 import Posts from './components/Posts';
 import Login from './components/Login';
 // import Nav from './components/Nav';
+import Chat from './components/Chat';
+
 
 function App() {
 
@@ -21,21 +23,11 @@ useEffect(() => {
   axios.post('http://localhost:3002/login', {email: 'eliza.wong@gmail.com'})   
     .then(res => { 
        setUser(res.data)
-       console.log("line30:", res.data);  
+      //  console.log("line30:", res.data);  
        return res.data.id 
     });
 }, []);
 
-
-// function App() {
-
-//   // useEffect(() => {
-//   //   axios.get('http://localhost:3002/posts/user/2')
-//   //     .then(res => {
-//   //       console.log("It is working");
-//   //       console.log(res);
-//   //     });
-//   // }, []);
 
 
 
@@ -98,6 +90,7 @@ useEffect(() => {
 
             <Route path="/friends">
               <Friends user={user}/>
+              <Chat />
             </Route>
 
           </Switch>

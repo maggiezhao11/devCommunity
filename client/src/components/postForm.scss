@@ -24,9 +24,13 @@
 }
 
 .shareInput {
-  border: none;
+  border: none !important;
   width: 80%;
 }
+
+// .react-input-emoji--input {
+//   outline: none !important;
+// }
 
 .shareInput:focus {
   outline: none;

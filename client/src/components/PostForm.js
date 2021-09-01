@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {EmojiEmotions} from "@material-ui/icons"
+// import InputEmoji from 'react-input-emoji'
 import './postForm.scss';
-
 
 function PostForm(props) {
 
@@ -13,6 +13,9 @@ function PostForm(props) {
     setContent(event.target.value)
    }
 
+  // function handleOnEnter (text) {
+  //   console.log('enter', text)
+  // }
   return (
     <div className="share">
     <div className="shareWrapper">
@@ -20,10 +23,19 @@ function PostForm(props) {
         <img className="shareProfileImg" src="" alt="" />
         <input
           placeholder="What's in your mind?"
+          type="text"
           className="shareInput"
           value={content}
           onChange={handleTyping}
         />
+        {/* <InputEmoji
+          value={content}
+          onChange={setContent}
+          cleanOnEnter
+          onEnter={handleOnEnter}
+          className="shareInput"
+          placeholder="What's in your mind?"
+        /> */}
       </div>
       <hr className="shareHr"/>
       <div className="shareBottom">

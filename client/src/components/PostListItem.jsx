@@ -33,7 +33,7 @@ function PostListItem(props) {
       </div>
       <div className="postBottom">
         <div className="postBottomLeft">
-          <img className="likeIcon" src="assets/heart.png"  alt="like pic" />
+          <img className="likeIcon" src=""  alt="like pic" />
           <span className="postLikeCounter"> 32 people like it</span>
         </div>
         <div className="postBottomRight">
