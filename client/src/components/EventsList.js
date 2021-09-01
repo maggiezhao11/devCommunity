@@ -1,31 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import Devcommunity from '../apis/Devcommunity';
+import axios from 'axios';
 
 
 const EventsList = (props) => {
-  const [events, setEvents] = useState([]);
-  const {filter} = props;
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let response
-        if (filter) {
-           response = await Devcommunity.post("/events/filter", {topic: filter});
-        } else {
-          response = await Devcommunity.get("/events");
-        }
-        
-        setEvents(response.data);
-        
-      } catch (err) {
-        
-      }
-    }
-    fetchData();
-  }, [filter])
+  //const [events, setEvents] = useState([]);
+  const { filter, events, setEvents, setUpcoming, upcoming } = props;
   
+  
+
+  const handleJoin = (elem) =>{
+    console.log('elem---', elem)
+    // axios.post("/events/join", { id: elem.id})
+    // .then(data => {
+    //   console.log('data------', data)
+    // })
+    
+    return axios.post("/events/join", {id:elem.id})
+    .then(data => {
+      setUpcoming(prev => {   
+        console.log('-----', prev)
+        const updatedEvents = [...prev, data.data[0]]   //get previous events, then set it to new event (data.data[0])
+        return updatedEvents
+        
+      })
+    })
+    
+  }
+
+  const changeText = function () {
+
+  }
+
   return (
-    <div>
+    <div className="container">
 
 
       <div className="list-group">
@@ -40,21 +48,24 @@ const EventsList = (props) => {
           <tbody>
 
             {events.map(elem => (
-              
-                <tr key={elem.id}>
-                  <td >
-                  <img src={elem.photo} className="img-fluid" alt="Responsive image"></img>
-                    {elem.name}
-                  </td>
-                  <td >
-                    {elem.description}
-                  </td>
-                  <td >
-                    {elem.date}
-                  </td>
-                </tr>
 
-              
+              <tr key={elem.id}>
+                <td >
+                  <img src={elem.photo} className="img-fluid" alt="Responsive image"></img>
+                  {elem.name}
+                </td>
+                <td >
+                  {elem.description}
+                </td>
+                <td >
+                  {elem.date}
+                  <br></br>
+                  
+                  <button onClick={ () => handleJoin(elem)} className="btn btn-primary">{upcoming.filter(singleEvent => singleEvent.id === elem.id).length > 0 ? "Joined" : "Join"}</button>
+                </td>
+              </tr>
+
+
             ))}
             <tr>
 
