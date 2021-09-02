@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function ChatMessageForm({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (currentMessage !== "") {
       const messageData = {
         room: room,
@@ -15,7 +15,7 @@ function ChatMessageForm({ socket, username, room }) {
           new Date(Date.now()).getMinutes(),
       };
       
-    socket.emit("send_message", messageData);
+    await socket.emit("send_message", messageData);
       setCurrentMessage("");
     }
   };

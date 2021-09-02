@@ -32,7 +32,7 @@ const SidebarData = [
 ]
 
 
-function SidebarList() {
+function SidebarList({toggle}) {
 
   const list = SidebarData.map((item, key) => {
     return <SidebarItem
@@ -42,6 +42,8 @@ function SidebarList() {
     link={item.link}
     />
   })
+
+
 
   return (
     <div className="Sidebar">
@@ -60,7 +62,7 @@ function SidebarList() {
          <li
               className="row"
               //chat onClick is for later toggle chat popup window
-              onClick={()=> {}}
+              onClick={()=> toggle()}
           > 
             <div id='icon'><ChatIcon /></div> <div id="title">Live Chat Room</div>
           </li>

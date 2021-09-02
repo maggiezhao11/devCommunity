@@ -1,8 +1,8 @@
-import './App.css';
+import './App.scss';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Welcome from './components/Welcome';
-// import SidebarList from './components/SidebarList';
+import SidebarList from './components/SidebarList';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Groups from "./routes/Groups";
@@ -10,13 +10,18 @@ import Events from "./routes/Events";
 import Friends from './components/Friends';
 import Posts from './components/Posts';
 import Login from './components/Login';
-// import Nav from './components/Nav';
+import Nav from './components/Nav';
 import Chat from './components/Chat';
 
 
 function App() {
 
 const [user, setUser] = useState(null);
+const [visible, setVisible] = useState(false); 
+
+const toggle = () => {
+  setVisible(!visible);
+}
 
 useEffect(() => {
 
@@ -65,10 +70,13 @@ useEffect(() => {
 
   return (
     <div className="App">
+  
       <Router>
-      {/* <Nav />
-      <SidebarList /> */}
-    
+       <Nav />
+      <div className="appContainer">
+      <SidebarList toggle={toggle}/>
+      <div className="appContainer1">
+      {visible && <Chat />}
           <Switch>
             <Route exact path="/">
             <Welcome />
@@ -90,11 +98,12 @@ useEffect(() => {
 
             <Route path="/friends">
               <Friends user={user}/>
-              <Chat />
             </Route>
-
           </Switch>
+          </div>
+        </div>
       </Router>
+
     </div>
    
   );

@@ -8,7 +8,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'flag-icon-css/css/flag-icon.min.css';
 
-import './index.css';
+import './index.scss';
 import App from './App';
 
 

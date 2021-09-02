@@ -5,8 +5,9 @@ import './postListItem.scss';
 
 
 function PostListItem(props) {
+  console.log(props);
 
-  const { content, first_name, photo} = props;
+  const { content, first_name, photo, avatar} = props;
 
   return (
 
@@ -16,7 +17,7 @@ function PostListItem(props) {
         <div className="postTopLeft">
           <img
             className="postProfileImg"
-            src=""
+            src={avatar}
             alt=""
           />
           <span className="postUsername">
