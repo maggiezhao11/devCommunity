@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Devcommunity from '../apis/Devcommunity';
+import "./updateEventList.scss"
 
 function UpcomingEventsList(props) {
   

@@ -42,7 +42,7 @@ useEffect(() => {
       } else {
         response = await Devcommunity.get("/events");
       }
-      console.log(response.data)
+      
       setEvents(response.data);
 
     } catch (err) {
@@ -57,15 +57,15 @@ useEffect(() => {
     try {
       
       const response = await Devcommunity.get("/events/upcoming");
-      console.log('data---',response.data);
+      
       setUpcoming(prev => {
-        console.log('prev-----', prev)
+        
         return response.data;
       });
 
 
       } catch(err){
-        console.log('error------', err)
+        
       }
 
   }

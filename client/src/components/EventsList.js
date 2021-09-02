@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Devcommunity from '../apis/Devcommunity';
 import axios from 'axios';
+import './eventsList.scss'
 
 
 const EventsList = (props) => {
@@ -30,12 +31,12 @@ const EventsList = (props) => {
 
 
       <div className="list-group">
-        <table className="table table-hover table-dark">
+        <table className="table table-event table-hover table-dark">
           <thead>
             <tr className="bg-primary">
-              <th scope="col" >Name</th>
-              <th scope="col" >Description</th>
-              <th scope="col" >Date</th>
+              <th scope="col" width="30%">Name</th>
+              <th scope="col" width="60%" >Description</th>
+              <th scope="col" width="10%" >Date</th>
             </tr>
           </thead>
           <tbody>
@@ -45,16 +46,21 @@ const EventsList = (props) => {
               <tr key={elem.id}>
                 <td >
                   <img src={elem.photo} className="img-fluid" alt="Responsive image"></img>
-                  {elem.name}
+                  <div className="event-name">
+                    {elem.name}
+                  </div>
+                  
                 </td>
                 <td >
                   {elem.description}
                 </td>
-                <td >
+                <td className="button">
                   {elem.date}
                   <br></br>
                   
-                  <button onClick={ () => handleJoin(elem)} className="btn btn-primary">{upcoming.filter(singleEvent => singleEvent.id === elem.id).length > 0 ? "Joined" : "Join"}</button>
+                    <button onClick={ () => handleJoin(elem)} className="btn btn-primary events-button">{upcoming.filter(singleEvent => singleEvent.id === elem.id).length > 0 ? "Joined" : "Join"}</button>
+                  
+                  
                 </td>
               </tr>
 
