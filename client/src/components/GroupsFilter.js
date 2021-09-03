@@ -16,7 +16,7 @@ const GroupsFilter = (props) => {
 
   return (
     <div >
-      <h1 className="font-weight-light display-1 text-center">Groups</h1>
+      <h1 className="group-title">Groups</h1>
       <div className="container">
         <h5>Filter:</h5>
         <form className="group-form">

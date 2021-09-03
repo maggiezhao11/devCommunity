@@ -44,7 +44,7 @@ const GroupsList = (props) => {
       <div className="list-group">
         <table className="table table-hover table-group">
           <thead>
-            <tr className="bg-primary">
+            <tr className="group-tr">
               <th scope="col" >Name</th>
               {/* <th scope="col" >Name</th> */}
               <th scope="col" >Description</th>
@@ -55,7 +55,7 @@ const GroupsList = (props) => {
 
             {groups.map((elem, index) => (
               <tr key={elem.id}>
-                <td >
+                <td className="group-img">
                   <img src={elem.photo} className="img-fluid" alt="Responsive image"></img>
                   <br></br>
                   <div className="group-name">

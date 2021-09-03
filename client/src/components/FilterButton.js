@@ -34,11 +34,6 @@ const FilterButton = (props) => {
             </select>
             <button onClick={handleSubmit} type="submit" className="btn btn-primary margin-search">Search</button>
           </form>
-          
-          
-          
-        
-
 
       </div>
     </div>

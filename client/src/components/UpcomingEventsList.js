@@ -13,36 +13,41 @@ function UpcomingEventsList(props) {
 
   return (
     <div className="container">
-      <div className="upcoming-container">
-        <EventIcon className="eventIcon" fontSize="large" color="primary"/>
-        <span className="upcoming-title">Upcoming Events</span>
-      </div>
+      
         
       <div className="list-group">
         <table className="table table-custom-color">
           <thead >
-            <tr className="event-name">
-             
-              <th scope="col" width="20%" >Date</th>
-              <th scope="col" >Events Name</th>
+            <tr className="upcoming-tr">
+              
+                <th scope="col" width="20%" ></th>
+                <th scope="col" className="second-th"><EventIcon className="eventIcon" fontSize="large" /><span className="upcoming-span">Upcoming Events</span></th>
+              
+              
               
             </tr>
           </thead>
-          <tbody>
+          <tbody className="upcoming-tbody">
 
             {upcoming.map(elem => (
               <tr key={elem.id}>
                 
-                <td className="events-date">
-                  <div className="event-day">
-                     {moment(elem.date).format("D")}
+                <td >
+                  <div className="upcoming-date">
+                    <div className="event-day">
+                      {moment(elem.date).format("D")}
+                    </div>
+                    <div className="event-month">
+                      {moment(elem.date).format("MMM")}
+                    </div>
                   </div>
-                  <div className="event-month">
-                    {moment(elem.date).format("MMM")}
-                  </div>
+                  
                 </td>
-                <td className="upcoming-name">
-                  {elem.name}
+                <td >
+                  <div className="upcoming-name">
+                     {elem.name}
+                  </div>
+                  
                 </td>
                
               </tr>

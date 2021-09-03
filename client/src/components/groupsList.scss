@@ -3,9 +3,16 @@
   justify-content: flex-end;
 }
 
+.group-title {
+  text-align: center;
+  color: #1877f2;
+}
+
 .margin-grouplist{
   margin-right: 50px;
   margin-top: 30px;
+  
+  
 }
 
 .table-group {
@@ -14,6 +21,10 @@
   thead {
     color: white;
   }
+
+.group-tr {
+  background-color: #1877f2;
+}
   
 }
 
@@ -22,3 +33,9 @@
   font-weight: bold;
 }
 
+.group-img {
+  img{
+    border-radius: 5%;
+  }
+ 
+}

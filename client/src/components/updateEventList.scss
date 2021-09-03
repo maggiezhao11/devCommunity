@@ -1,46 +1,86 @@
 .table-custom-color {
 
   thead {
-    background-color: #0d6efd;
+    background-color: #1877f2;
+   
     
   }
-    color: white;
-    background-color: #4e5154;
+    color: #687177;
+    background-color: white;
     border-color: transparent;
+    border-radius: 7%;
+    border-top: solid white 5px;
+    font-family: sans-serif;
+    
+    
+   
+}
+
+.upcoming-tbody {
+  border-style: solid;
+  border-color: #e6f2ff;
+  
   
 }
 
-.upcoming-container {
-  text-align: center;
-}
+
+ .upcoming-tr {
+   border-bottom-width: 5px;
+   border-color: #1877f2;
+   span {
+     font-size: 20px;
+     margin-left: 20px;
+     vertical-align: middle;
+     color: white;
+     
+   }
+ }
+
 .eventIcon {
-  
-  margin-bottom:5px;
+  color: white;
 }
 
 .upcoming-title {
   margin-left: 20px;
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: bold;
   text-align: center;
+  color: #1877f2;
 }
 
-.events-date {
+.upcoming-date {
   text-align: center;
-}
+  background-color: red;
+  max-width: 50%;
+  margin-left: 25px;
+  margin-right: 10px;
+  border-radius: 20%;
 
-.event-day {
-  font-weight:bold;
-  font-size:xx-large;
-  color: gold;
-}
 
-.event-month {
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  text-transform: uppercase;
+  .event-day {
+    font-weight:bold;
+    font-size:25px;
+    color: red;
+    background-color: white;
+    border-color: red;
+    border-style: solid;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;
+    
+  }
+  
+  .event-month {
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: white;
+  }
+  
 }
-
 .upcoming-name {
-  text-align: center;
+  padding-top: 15px;
+  font-size: 16px;
 }
+
+
