@@ -12,6 +12,10 @@ import Posts from './components/Posts';
 import Login from './components/Login';
 import Nav from './components/Nav';
 import Chat from './components/Chat';
+import UpcomingEvents from './routes/UpcomingEvents';
+import UpcomingEventsList from './components/UpcomingEventsList';
+import Devcommunity from './apis/Devcommunity';
+
 
  //axios call uses ajax. but by default ajax call wont send the cookies session info to browser, then we need to manually add here as another param
 axios.defaults.withCredentials = true;
@@ -19,6 +23,10 @@ function App() {
 
 const [user, setUser] = useState({}); //do not set up initial state as NULL because JS cannot read property value with NULL. should either () or ({})
 const [visible, setVisible] = useState(false); 
+const [events, setEvents] = useState([]);
+const [upcoming, setUpcoming] = useState([]);
+const [filter, setFilter] = useState("");
+
 
 const toggle = () => {
   setVisible(!visible);
@@ -53,34 +61,46 @@ useEffect(() => {
 
 
 // create a page component to display language / sidebar
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      let response
+      if (filter) {
+        response = await Devcommunity.post("/events/filter", { topic: filter });
+      } else {
+        response = await Devcommunity.get("/events");
+      }
+      
+      setEvents(response.data);
 
-/* <Router>
-  <Switch>
-    <Route path="/">
-        <Page sidebar={false} language={true}> 
-            <Welcome/>
-        </Page>
-    </Route>
+    } catch (err) {
+      
+    }
+  }
+  fetchData();
+}, [filter])
 
-    <Route path="/home">
-        <Page sidebar={true} language={true}> 
-            <Home/>
-        </Page>
-    </Route>
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      
+      const response = await Devcommunity.get("/events/upcoming");
+      
+      setUpcoming(prev => {
+        
+        return response.data;
+      });
 
-    ...
-  </Switch>
-</Router> */
 
-//page.jsx
+      } catch(err){
+        
+      }
 
-// const Page = ({ sidebar, children }) => (
-//   <>
-//     {sidebar && <Sidebar/>} // conditionally render sidebar
-//     // same thing for language
-//     {children} // this is the actual page
-//   </>
-// )
+  }
+  fetchData();
+
+}, []);
+
 
 
 
@@ -108,9 +128,16 @@ useEffect(() => {
               {/* //loading information */}
             </Route>
 
-            <Route exact path="/groups" component={Groups} />
+            <Route exact path="/groups">
+              <Groups/>
+            </Route>
 
-            <Route exact path="/events" component={Events} />
+            <Route exact path="/events">
+              <Events events={events} setEvents={setEvents} upcoming={upcoming} setUpcoming={setUpcoming} filter={filter} setFilter={setFilter}/>
+            </Route>
+            <Route exact path="/events/upcoming">
+              <UpcomingEvents upcoming={upcoming} setUpcoming={setUpcoming}/>
+            </Route>
 
             <Route path="/friends">
               <Friends user={user}/>

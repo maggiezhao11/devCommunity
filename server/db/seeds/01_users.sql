@@ -1,5 +1,5 @@
 INSERT INTO users (first_name, last_name, email, avatar) VALUES 
-('Eliza', 'Wong', 'eliza.wong@gmail.com', 'https://preview.redd.it/mt8onnu4a4121.jpg?width=960&crop=smart&auto=webp&s=e0ff2f2412f732146f5a620238a6c1af87503f44'),
+('Eliza', 'Wong', 'eliza.wong@gmail.com', 'https://preview.redd.it/oi5cikd08ip51.jpg?width=720&format=pjpg&auto=webp&s=34679e0f0ea40151dbdb83cbe304707860029296'),
 ('Maggie', 'Zhao', 'maggie.zhao@gmail.com', 'https://i.pinimg.com/474x/aa/42/7a/aa427a67d5dc8bc31629fbe50cc62abd.jpg'),
 ('Adam', 'Smith', 'adam.smith@gmail.com', 'https://i.pinimg.com/474x/34/25/9d/34259d8b6b60a94f5e43bde242ecc26e.jpg'),
 ('Andrea', 'Maiorino', 'andrea.maiorino@gmail.com', 'https://i.pinimg.com/474x/f6/e4/df/f6e4dfc2834fafdc38caec39ed628748.jpg'),
