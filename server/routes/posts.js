@@ -72,7 +72,7 @@ module.exports = (db) => {
     let userId = req.query.user_id;
     if (!userId) userId = req.session.user_id;
 
-    db.query(`SELECT posts.*, users.first_name FROM posts JOIN users ON users.id = user_id WHERE user_id = $1 OR user_id IN (SELECT DISTINCT user2_id FROM friends WHERE user1_id = $2) ORDER BY id desc`, [userId, userId])
+    db.query(`SELECT posts.*, users.first_name, users.avatar FROM posts JOIN users ON users.id = user_id WHERE user_id = $1 OR user_id IN (SELECT DISTINCT user2_id FROM friends WHERE user1_id = $2) ORDER BY id desc`, [userId, userId])
       .then(data => {
         res.json(data.rows);
       }

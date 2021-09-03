@@ -1,11 +1,11 @@
 import {useState} from 'react';
-import {EmojiEmotions} from "@material-ui/icons"
+import {EmojiEmotions} from "@material-ui/icons";
 // import InputEmoji from 'react-input-emoji'
 import './postForm.scss';
 
-function PostForm(props) {
+function PostForm({submit, user}) {
 
-  const{submit} = props;
+  const avatar = user.avatar
 
   const [content, setContent] = useState("");
 
@@ -20,7 +20,7 @@ function PostForm(props) {
     <div className="share">
     <div className="shareWrapper">
       <div className="shareTop">
-        <img className="shareProfileImg" src="" alt="" />
+        <img className="shareProfileImg" src={avatar} alt="" />
         <input
           placeholder="What's in your mind?"
           type="text"

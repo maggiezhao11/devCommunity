@@ -65,6 +65,15 @@
     height: 24px;
     margin-right: 5px;
     cursor: pointer;
+    color:grey;
+}
+
+.likeIcon :hover {
+  color:goldenrod;
+}
+
+.likedIcon {
+  color: red;
 }
 
 .postLikeCounter{
@@ -75,4 +84,28 @@
     cursor: pointer;
     border-bottom: 1px dashed gray;
     font-size: 15px;
+}
+
+.deleteIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  cursor: pointer;
+  color:grey;
+}
+
+.deleteIcon :hover {
+  color:goldenrod;
+}
+
+.commentIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  cursor: pointer;
+  color:grey;
+}
+
+.commentIcon :hover {
+  color:goldenrod;
 }

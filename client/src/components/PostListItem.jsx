@@ -1,16 +1,27 @@
-import React from 'react';
-import { MoreVert } from "@material-ui/icons";
+import React, {useState, useEffect} from 'react';
+import { MoreVert, Favorite, Delete, Create } from "@material-ui/icons";
 import './postListItem.scss';
 
 
 
 function PostListItem(props) {
-  console.log(props);
+  const { id, content, first_name, photo, avatar, deletePost} = props;
+  
+  const [like, setLike] = useState(0)
+  const [isLiked, setIsLiked] = useState(false);
+  const [isRed, setIsRed] = useState("likeIcon");
 
-  const { content, first_name, photo, avatar} = props;
+  const likeHandler =() => {
+    setLike(isLiked ? like -1 : like +1);
+    setIsLiked(!isLiked);
+  }
+
+  useEffect (() => {
+    if (isLiked) setIsRed("likedIcon");
+    else setIsRed("likeIcon")
+  }, [isLiked])
 
   return (
-
     <div className="post">
     <div className="postWrapper">
       <div className="postTop">
@@ -34,35 +45,16 @@ function PostListItem(props) {
       </div>
       <div className="postBottom">
         <div className="postBottomLeft">
-          <img className="likeIcon" src=""  alt="like pic" />
-          <span className="postLikeCounter"> 32 people like it</span>
+          <Favorite className={`${isRed}`} onClick={() => likeHandler()}/>
+          <span className="postLikeCounter" > {like} people like it</span>
         </div>
         <div className="postBottomRight">
-          <span className="postCommentText">comments</span>
+          <Create className="commentIcon" />
+          <Delete className="deleteIcon" onClick={() => deletePost(id)} />
         </div>
       </div>
     </div>
   </div>
-    // <div>
-    //   <article className="posts">
-    //     <header className="posts-header">
-    //       <div className="posts-header-left">
-    //         <img src={photo} alt={first_name} />
-    //         <span>{first_name}</span>
-    //       </div>
-    //     </header>
-    //     <div className="text">{content}</div>
-    //     <footer>
-    //       <div className="footer-display">
-    //         <div className="icon">
-    //           <i className="fas fa-flag"></i>
-    //           <i className="fas fa-retweet"></i>
-    //           <i className="fas fa-heart"></i>
-    //         </div>
-    //       </div>
-    //     </footer>
-    //   </article>    
-    // </div>
   )
 }
 

@@ -13,24 +13,40 @@ import Login from './components/Login';
 import Nav from './components/Nav';
 import Chat from './components/Chat';
 
-
+ //axios call uses ajax. but by default ajax call wont send the cookies session info to browser, then we need to manually add here as another param
+axios.defaults.withCredentials = true;
 function App() {
 
-const [user, setUser] = useState(null);
+const [user, setUser] = useState({}); //do not set up initial state as NULL because JS cannot read property value with NULL. should either () or ({})
 const [visible, setVisible] = useState(false); 
 
 const toggle = () => {
   setVisible(!visible);
 }
 
-useEffect(() => {
-
-  axios.post('http://localhost:3002/login', {email: 'eliza.wong@gmail.com'})   
+const userLogin = (email) => {
+ 
+  // axios.post('http://localhost:3002/login', {email}, {withCredentials: true})  
+  axios.post('http://localhost:3002/login', {email})   
     .then(res => { 
        setUser(res.data)
-      //  console.log("line30:", res.data);  
-       return res.data.id 
+      //  console.log("line30 userlogin data:", res.data);  
+       return res.data
     });
+
+}
+
+
+useEffect(() => {
+
+  // axios.post('http://localhost:3002/login', {email: 'eliza.wong@gmail.com'})   
+  axios.get('http://localhost:3002/users')
+    .then(res => { 
+       setUser(res.data)
+      //  console.log("line42 user data:", res.data);  
+       return res.data
+    });
+
 }, []);
 
 
@@ -72,7 +88,7 @@ useEffect(() => {
     <div className="App">
   
       <Router>
-       <Nav />
+       <Nav user={user}/>
       <div className="appContainer">
       <SidebarList toggle={toggle}/>
       <div className="appContainer1">
@@ -83,7 +99,7 @@ useEffect(() => {
             </Route>
 
             <Route exact path="/login">
-            <Login />
+            <Login userLogin={userLogin}/>
             </Route>
 
             <Route path="/home">

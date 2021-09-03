@@ -46,7 +46,7 @@
 .chat-window .chat-header {
   height: 45px;
   border-radius: 6px;
-  background: #263238;
+  background: goldenrod;
   position: relative;
   cursor: pointer;
 }
@@ -62,6 +62,7 @@
   height: calc(450px - (45px + 70px));
   border: 1px solid #263238;
   background: #fff;
+  border-radius: 6px;
 
   position: relative;
 }

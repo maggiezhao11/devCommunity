@@ -43,7 +43,7 @@ const GroupsList = (props) => {
             {groups.map(elem => (
               <tr key={elem.id}>
                 <td >
-                  <img src={elem.photo} className="img-fluid" alt="Responsive image"></img>
+                  <img src={elem.photo} className="img-fluid" alt=""></img>
                   
                 </td>
                 <td >

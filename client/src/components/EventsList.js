@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import Devcommunity from '../apis/Devcommunity';
 
 
@@ -43,7 +43,7 @@ const EventsList = (props) => {
               
                 <tr key={elem.id}>
                   <td >
-                  <img src={elem.photo} className="img-fluid" alt="Responsive image"></img>
+                  <img src={elem.photo} className="img-fluid" alt=""></img>
                     {elem.name}
                   </td>
                   <td >

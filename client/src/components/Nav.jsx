@@ -3,7 +3,7 @@
 import "./nav.scss";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 
-export default function Nav() {
+export default function Nav({user}) {
   return (
     <div className="navContainer">
       <div className="navLeft">
@@ -37,7 +37,7 @@ export default function Nav() {
             <span className="navIconBadge">1</span>
           </div>
         </div>
-        <img src="" alt="" className="navImg"/>
+        <img src={user.avatar} alt="" className="navImg"/>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SendIcon from '@material-ui/icons/Send';
 
 function ChatMessageForm({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -35,7 +36,7 @@ function ChatMessageForm({ socket, username, room }) {
             event.key === "Enter" && sendMessage();
           }}
         />
-        <button onClick={() => sendMessage()}>&#9658;</button>
+        <button onClick={() => sendMessage()} ><SendIcon /></button>
       </div>
   );
 }

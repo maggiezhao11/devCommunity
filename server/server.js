@@ -3,10 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const { Server } = require("socket.io");
+const jwt = require("jsonwebtoken");
 const db = require('./db');
-
-
-
 
 const app = express();
 const http = require("http");
@@ -18,7 +16,7 @@ app.use(cookieSession({
 //middleware
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(cors());
+app.use(cors({origin: true, credentials: true}));
 app.use(express.urlencoded())
 
 
@@ -37,13 +35,16 @@ io.on("connection", (socket) => {
     socket.join(data);
     console.log(`user with ID: ${socket.id} joined room: ${data}`);
 
-    socket.on("send_message", (msg) => {
-      console.log(`received: ${msg}`)
-      socket.emit("receive_message", msg);
-      socket.to(data).emit("receive_message", msg);
-    });
+  });
+
+  socket.on("send_message", (msg) => {
+    console.log(`received: ${msg}`)
+    //send message to everyone in all rooms as a back up plan
+    socket.emit("receive_message", msg);
+    // socket.to(data.room).emit("receive_message", msg);
 
   });
+
 
   socket.on("disconnect", () => {
     console.log(`user is disconnected: ${socket.id}`)
@@ -63,6 +64,14 @@ app.use('/users', users(db));
 app.use('/groups', groups(db));
 app.use('/events', events(db));
 app.use('/login', login(db));
+
+
+const generateAccessToken = (user) => {
+  return jwt.sign({ id: user.id}, "mySecretJWTKey", {
+    expiresIn: "10m",
+  });
+};
+
 
 app.get("/", (req, res) => {
   
