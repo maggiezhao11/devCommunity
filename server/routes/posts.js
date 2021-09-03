@@ -6,7 +6,7 @@ module.exports = (db) => {
   //create new post by user
   router.post("/", (req, res) => {
     const content = req.body.content;
-    const user_id = req.body.user_id;
+    const user_id = req.session.user_id;
     const photo = req.body.photo;
     console.log("userID", req.body.user_id)
     db.query(

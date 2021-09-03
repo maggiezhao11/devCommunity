@@ -50,7 +50,8 @@ function SidebarList({toggle}) {
       <ul className="SidebarList">
           {list}
          <li className="row" onClick={()=> toggle()}> 
-            <div id='icon'><ChatIcon /></div> <div id="title">Live Chat Room</div>
+             <div id="title">Live Chat Room</div>
+             <div id='icon'><ChatIcon /></div>
           </li>
       </ul>
     </div>

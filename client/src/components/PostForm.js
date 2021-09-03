@@ -46,7 +46,10 @@ function PostForm({submit, user}) {
                   <span className="shareOptionText">Feelings</span>
               </div>
           </div>
-          <button className="shareButton" type="submit" onClick={()=> submit(content)} >Share</button>
+          <button className="shareButton" type="submit" onClick={()=> {
+            submit(content)
+            setContent("")
+          }} >Share</button>
       </div>
     </div>
   </div>

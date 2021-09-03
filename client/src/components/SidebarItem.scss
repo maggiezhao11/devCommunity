@@ -1,12 +1,15 @@
+.row {
+  display: flex;
+}
 
 .row #icon {
-  flex: 30%;
+  flex: 3;
   display: grid;
   place-items: center;
 
 }
 
 .row #title{
-  flex: 70%;
+  flex: 7;
   
 }

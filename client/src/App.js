@@ -15,6 +15,8 @@ import Chat from './components/Chat';
 import UpcomingEvents from './routes/UpcomingEvents';
 import UpcomingEventsList from './components/UpcomingEventsList';
 import Devcommunity from './apis/Devcommunity';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
  //axios call uses ajax. but by default ajax call wont send the cookies session info to browser, then we need to manually add here as another param
@@ -48,7 +50,7 @@ const userLogin = (email) => {
 useEffect(() => {
 
   // axios.post('http://localhost:3002/login', {email: 'eliza.wong@gmail.com'})   
-  axios.get('http://localhost:3002/users')
+  axios.get('/users/')
     .then(res => { 
        setUser(res.data)
       //  console.log("line42 user data:", res.data);  
@@ -147,6 +149,7 @@ useEffect(() => {
         </div>
       </Router>
 
+      <ToastContainer position={"top-center"}/>
     </div>
    
   );
