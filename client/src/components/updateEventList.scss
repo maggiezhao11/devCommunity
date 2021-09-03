@@ -2,31 +2,29 @@
 
   thead {
     background-color: #1877f2;
-   
     
+
   }
     color: #687177;
     background-color: white;
     border-color: transparent;
     border-radius: 7%;
-    border-top: solid white 5px;
+    border-top: solid white 10px;
     font-family: sans-serif;
-    
-    
-   
+  
 }
 
 .upcoming-tbody {
   border-style: solid;
   border-color: #e6f2ff;
-  
-  
+
 }
 
 
  .upcoming-tr {
    border-bottom-width: 5px;
    border-color: #1877f2;
+   
    span {
      font-size: 20px;
      margin-left: 20px;
@@ -51,8 +49,8 @@
 .upcoming-date {
   text-align: center;
   background-color: red;
-  max-width: 50%;
-  margin-left: 25px;
+  width: 60%;
+  margin-left: 15px;
   margin-right: 10px;
   border-radius: 20%;
 
@@ -82,5 +80,6 @@
   padding-top: 15px;
   font-size: 16px;
 }
+
 
 

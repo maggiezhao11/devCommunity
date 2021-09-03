@@ -1,6 +1,29 @@
-.margin-search {
-  margin-left: 20px;
+.group-filter{
+  display: flex;
+  padding-top: 10px;
+  
+  h4 {
+    margin-left: 20px;
+    color: #687177;
+  }
+}
+
+.group-filter-title {
+ 
+  color:#1877f2;
+  margin-right: 20px;
+  font-weight: bold;
+  
   
 }
 
+.custom-select-group {
+  color:#687177;
+  font-size: 1.2em;
+  margin-left:20px;
+ 
+}
 
+.group-title-div{
+  margin-left: auto;
+}

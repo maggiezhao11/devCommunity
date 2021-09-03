@@ -1,5 +1,30 @@
+.filter-button-custom {
+  padding-top: 20px;
+}
+
+.text-events {
+  text-align:right;
+  color:#1877f2;
+  margin-right: 20px;
+  font-weight: bold;
+}
+.custom-select {
+  color:#687177;
+  font-size: 1.2em;
+  
+}
 
 .margin-search {
   margin-left: 20px;
+  font-weight: bold;
   
+}
+
+.event-filter {
+  display: flex;
+
+  h4 {
+    margin-left: 20px;
+    color: #687177;
+  }
 }

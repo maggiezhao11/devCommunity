@@ -111,8 +111,9 @@ useEffect(() => {
        <Nav user={user}/>
       <div className="appContainer">
       <SidebarList toggle={toggle}/>
+      
       <div className="appContainer1">
-      {visible && <Chat />}
+      
           <Switch>
             <Route exact path="/">
             <Welcome />
@@ -124,18 +125,23 @@ useEffect(() => {
 
             <Route path="/home">
               <Home />
+              
               <Posts user={user} />
-              <UpcomingEvents upcoming={upcoming} setUpcoming={setUpcoming}/>
+              
               {/* //loading information */}
               
             </Route>
 
             <Route exact path="/groups">
+              
               <Groups/>
+              
             </Route>
 
             <Route exact path="/events">
+              
               <Events events={events} setEvents={setEvents} upcoming={upcoming} setUpcoming={setUpcoming} filter={filter} setFilter={setFilter}/>
+              
             </Route>
             {/* <Route exact path="/events/upcoming">
               
@@ -146,6 +152,12 @@ useEffect(() => {
             </Route>
           </Switch>
           </div>
+          <div className="rightbar-top">
+            <UpcomingEvents upcoming={upcoming} setUpcoming={setUpcoming}/>
+
+            {visible && <Chat />}
+          </div>
+          
         </div>
       </Router>
 

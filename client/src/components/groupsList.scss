@@ -1,6 +1,7 @@
 #group-button {
   display: flex;
   justify-content: flex-end;
+  
 }
 
 .group-title {
@@ -16,14 +17,14 @@
 }
 
 .table-group {
-  margin-top: 20px;
+  margin-top: 10px;
 
   thead {
     color: white;
   }
 
 .group-tr {
-  background-color: #1877f2;
+  background-color: white;
 }
   
 }
@@ -31,6 +32,7 @@
 .group-name {
   text-align: center;
   font-weight: bold;
+  color:#687177;
 }
 
 .group-img {
@@ -38,4 +40,8 @@
     border-radius: 5%;
   }
  
+}
+
+.group-description {
+  color: #687177;
 }

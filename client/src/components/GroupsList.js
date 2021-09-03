@@ -67,9 +67,12 @@ const GroupsList = (props) => {
                 {/* <td >
                   
                 </td> */}
-                <td >
-                  {elem.description}
-                  <br></br>
+                <td className="group-description">
+                  <div className="group-description-div">
+                     {elem.description}
+                  </div>
+                  
+                  
                   <div id="group-button">
                      <button className="btn btn-primary margin-grouplist" onClick={() => handleJoin(index)}>
                        {elem.joined ? 'Joined' : 'Join'}

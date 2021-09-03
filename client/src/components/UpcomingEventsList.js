@@ -20,8 +20,9 @@ function UpcomingEventsList(props) {
           <thead >
             <tr className="upcoming-tr">
               
-                <th scope="col" width="20%" ></th>
+               
                 <th scope="col" className="second-th"><EventIcon className="eventIcon" fontSize="large" /><span className="upcoming-span">Upcoming Events</span></th>
+                <th scope="col" width="20%" ></th>
               
               
               
@@ -31,6 +32,13 @@ function UpcomingEventsList(props) {
 
             {upcoming.map(elem => (
               <tr key={elem.id}>
+
+                <td >
+                  <div className="upcoming-name">
+                     {elem.name}
+                  </div>
+                  
+                </td>
                 
                 <td >
                   <div className="upcoming-date">
@@ -43,12 +51,7 @@ function UpcomingEventsList(props) {
                   </div>
                   
                 </td>
-                <td >
-                  <div className="upcoming-name">
-                     {elem.name}
-                  </div>
-                  
-                </td>
+                
                
               </tr>
             )
