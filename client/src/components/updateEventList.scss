@@ -1,13 +1,8 @@
 .table-custom-color {
-  // --bs-table-bg: #3b3c3d;
-  //   --bs-table-striped-bg: grey;
-  //   --bs-table-striped-color: white;
-  //   --bs-table-active-bg: grey;
-  //   --bs-table-active-color: #fff;
-  //   --bs-table-hover-bg: #323539;
-  //   --bs-table-hover-color: #fff;
+
   thead {
-    background-color: #3b3c3d;
+    background-color: #0d6efd;
+    
   }
     color: white;
     background-color: #4e5154;
@@ -15,6 +10,37 @@
   
 }
 
+.upcoming-container {
+  text-align: center;
+}
+.eventIcon {
+  
+  margin-bottom:5px;
+}
+
+.upcoming-title {
+  margin-left: 20px;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+
 .events-date {
+  text-align: center;
+}
+
+.event-day {
+  font-weight:bold;
+  font-size:xx-large;
+  color: gold;
+}
+
+.event-month {
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+
+.upcoming-name {
   text-align: center;
 }

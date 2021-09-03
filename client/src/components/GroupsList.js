@@ -42,7 +42,7 @@ const GroupsList = (props) => {
 
 
       <div className="list-group">
-        <table className="table table-hover table-dark table-group">
+        <table className="table table-hover table-group">
           <thead>
             <tr className="bg-primary">
               <th scope="col" >Name</th>

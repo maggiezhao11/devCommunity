@@ -125,6 +125,7 @@ useEffect(() => {
             <Route path="/home">
               <Home />
               <Posts user={user} />
+              <UpcomingEvents upcoming={upcoming} setUpcoming={setUpcoming}/>
               {/* //loading information */}
               
             </Route>
@@ -136,9 +137,9 @@ useEffect(() => {
             <Route exact path="/events">
               <Events events={events} setEvents={setEvents} upcoming={upcoming} setUpcoming={setUpcoming} filter={filter} setFilter={setFilter}/>
             </Route>
-            <Route exact path="/events/upcoming">
-              <UpcomingEvents upcoming={upcoming} setUpcoming={setUpcoming}/>
-            </Route>
+            {/* <Route exact path="/events/upcoming">
+              
+            </Route> */}
 
             <Route path="/friends">
               <Friends user={user}/>

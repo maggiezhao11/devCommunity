@@ -31,7 +31,7 @@ const EventsList = (props) => {
 
 
       <div className="list-group">
-        <table className="table table-event table-hover table-dark">
+        <table className="table table-event table-hover">
           <thead>
             <tr className="bg-primary">
               <th scope="col" width="30%">Name</th>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Devcommunity from '../apis/Devcommunity';
 import "./updateEventList.scss";
 import moment from 'moment';
+import EventIcon from '@material-ui/icons/Event';
 
 function UpcomingEventsList(props) {
   
@@ -12,14 +13,18 @@ function UpcomingEventsList(props) {
 
   return (
     <div className="container">
-      <h1>Upcoming Events </h1>
+      <div className="upcoming-container">
+        <EventIcon className="eventIcon" fontSize="large" color="primary"/>
+        <span className="upcoming-title">Upcoming Events</span>
+      </div>
+        
       <div className="list-group">
         <table className="table table-custom-color">
           <thead >
             <tr className="event-name">
              
               <th scope="col" width="20%" >Date</th>
-              <th scope="col" >Name</th>
+              <th scope="col" >Events Name</th>
               
             </tr>
           </thead>
@@ -29,9 +34,14 @@ function UpcomingEventsList(props) {
               <tr key={elem.id}>
                 
                 <td className="events-date">
-                  {moment(elem.date).format("MMM Do")}
+                  <div className="event-day">
+                     {moment(elem.date).format("D")}
+                  </div>
+                  <div className="event-month">
+                    {moment(elem.date).format("MMM")}
+                  </div>
                 </td>
-                <td >
+                <td className="upcoming-name">
                   {elem.name}
                 </td>
                
