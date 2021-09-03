@@ -126,6 +126,7 @@ useEffect(() => {
               <Home />
               <Posts user={user} />
               {/* //loading information */}
+              
             </Route>
 
             <Route exact path="/groups">
