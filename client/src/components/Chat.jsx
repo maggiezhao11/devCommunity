@@ -6,6 +6,7 @@ import ChatMessageForm from "./ChatMessageForm";
 
 
 
+
 const socket = io.connect("http://localhost:3002");
 
 function Chat() {
@@ -24,22 +25,31 @@ function Chat() {
     <div className="chatContainer">
       {!showChat ? (
         <div className="joinChatContainer">
-          <h3>Join A Chat</h3>
-          <input
-            type="text"
-            placeholder="Type your nickname..."
-            onChange={(event) => {
-              setUsername(event.target.value);
-            }}
-          />
-          <input
-            type="text"
-            placeholder="Type Room ID..."
-            onChange={(event) => {
-              setRoom(event.target.value);
-            }}
-          />
-          <button onClick={() => joinRoom()}>Join A Room</button>
+          <div>
+            <h3>Join A Chat</h3>
+          </div>
+          <div>
+            {/* <Avatar src="/broken-image.jpg" /> */}
+            <input
+              type="text"
+              placeholder="Type your nickname..."
+              onChange={(event) => {
+                setUsername(event.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Type Room ID..."
+              onChange={(event) => {
+                setRoom(event.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <button onClick={() => joinRoom()}>Join A Room</button>
+          </div>
         </div>
       ) : (
         <>

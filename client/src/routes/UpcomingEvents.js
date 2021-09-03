@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import UpcomingEventsList from '../components/UpcomingEventsList';
 
 const UpcomingEvents = (props) => {

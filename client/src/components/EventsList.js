@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import './eventsList.scss';
 import moment from 'moment';
@@ -6,9 +6,7 @@ import moment from 'moment';
 
 const EventsList = (props) => {
   //const [events, setEvents] = useState([]);
-  const { filter, events, setEvents, setUpcoming, upcoming } = props;
-  
-  
+  const {  events, setUpcoming, upcoming } = props;
 
   const handleJoin = (elem) =>{
     //console.log('elem---', elem)
@@ -31,11 +29,11 @@ const EventsList = (props) => {
 
 
       <div className="list-group">
-        <table className="table table-event table-hover table-dark">
+        <table className="table table-event table-hover">
           <thead>
-            <tr className="bg-primary">
+            <tr className="group-tr">
               <th scope="col" width="30%">Name</th>
-              <th scope="col" width="50%" >Description</th>
+              <th scope="col" width="60%" >Description</th>
               <th scope="col" width="10%">Date</th>
             </tr>
           </thead>
@@ -44,21 +42,32 @@ const EventsList = (props) => {
             {events.map(elem => (
 
               <tr key={elem.id}>
-                <td >
-                  <img src={elem.photo} className="img-fluid" alt="Responsive image"></img>
+                <td className="event-img">
+                  <img src={elem.photo} className="img-fluid" alt="Responsive" ></img>
                   <div className="event-name">
                     {elem.name}
                   </div>
                   
                 </td>
                 <td >
-                  {elem.description}
+                  <div className="event-description">
+                     {elem.description}
+                  </div>
+                  
                 </td>
                 <td className="button">
-                  {moment(elem.date).format("MMM Do YYYY")}
+                  <div className="date-event">
+                      <div className="date-event-month">
+                        {moment(elem.date).format("MMM")}
+                      </div>
+                      <div className="date-event-day">
+                        {moment(elem.date).format("D")}
+                      </div>
+                  </div>
+                  
                   <br></br>
                   
-                    <button onClick={ () => handleJoin(elem)} className="btn btn-primary events-button">{upcoming.filter(singleEvent => singleEvent.id === elem.id).length > 0 ? "Joined" : "Join"}</button>
+                    <button onClick={ () => handleJoin(elem)} className="btn btn-danger events-button">{upcoming.filter(singleEvent => singleEvent.id === elem.id).length > 0 ? "Joined" : "Join"}</button>
                   
                   
                 </td>

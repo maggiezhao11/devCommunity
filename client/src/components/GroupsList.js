@@ -42,9 +42,9 @@ const GroupsList = (props) => {
 
 
       <div className="list-group">
-        <table className="table table-hover table-dark table-group">
+        <table className="table table-hover table-group">
           <thead>
-            <tr className="bg-primary">
+            <tr className="group-tr">
               <th scope="col" >Name</th>
               {/* <th scope="col" >Name</th> */}
               <th scope="col" >Description</th>
@@ -55,8 +55,8 @@ const GroupsList = (props) => {
 
             {groups.map((elem, index) => (
               <tr key={elem.id}>
-                <td >
-                  <img src={elem.photo} className="img-fluid" alt="Responsive image"></img>
+                <td className="group-img">
+                  <img src={elem.photo} className="img-fluid" alt="Responsive"></img>
                   <br></br>
                   <div className="group-name">
                     {elem.name}
@@ -67,9 +67,12 @@ const GroupsList = (props) => {
                 {/* <td >
                   
                 </td> */}
-                <td >
-                  {elem.description}
-                  <br></br>
+                <td className="group-description">
+                  <div className="group-description-div">
+                     {elem.description}
+                  </div>
+                  
+                  
                   <div id="group-button">
                      <button className="btn btn-primary margin-grouplist" onClick={() => handleJoin(index)}>
                        {elem.joined ? 'Joined' : 'Join'}

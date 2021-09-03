@@ -18,14 +18,19 @@ const FilterButton = (props) => {
   }
 
   return (
-    <div key="event.id">
-      <h1 className="font-weight-light display-1 text-center">Events</h1>
-      <div className="container">
-        <h5>Filter: </h5>
+    <div key="event.id" className="filter-button-custom">
+      
+      
+      <div className="event-filter">
+        <div >
+          <h4>Filter: </h4>
+        </div>
+   
+        <div className="container">
         
           <form className="form">
             <select className="custom-select my-1 mr-sm-2" onChange={handleChange}>
-              <option disabled>Topic</option>
+              <option selected>Topic</option>
               <option value="technology">Technology</option>
               <option value="travel & outdoor">Travel & Outdoor</option>
               <option value="parents & family">Parents & Family</option>
@@ -34,12 +39,11 @@ const FilterButton = (props) => {
             </select>
             <button onClick={handleSubmit} type="submit" className="btn btn-primary margin-search">Search</button>
           </form>
-          
-          
-          
-        
 
-
+        </div>
+        <div>
+          <h1 className="font-weight-light text-events">Events</h1>
+        </div>
       </div>
     </div>
   )

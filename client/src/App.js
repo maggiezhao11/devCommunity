@@ -13,7 +13,6 @@ import Login from './components/Login';
 import Nav from './components/Nav';
 import Chat from './components/Chat';
 import UpcomingEvents from './routes/UpcomingEvents';
-import UpcomingEventsList from './components/UpcomingEventsList';
 import Devcommunity from './apis/Devcommunity';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -93,18 +92,12 @@ useEffect(() => {
         return response.data;
       });
 
-
-      } catch(err){
-        
-      }
+      } catch(err){}
 
   }
   fetchData();
 
 }, []);
-
-
-
 
   return (
     <div className="App">
@@ -113,8 +106,9 @@ useEffect(() => {
        <Nav user={user}/>
       <div className="appContainer">
       <SidebarList toggle={toggle}/>
+      
       <div className="appContainer1">
-      {visible && <Chat />}
+      
           <Switch>
             <Route exact path="/">
             <Welcome />
@@ -126,26 +120,37 @@ useEffect(() => {
 
             <Route path="/home">
               <Home />
+              
               <Posts user={user} />
+              
               {/* //loading information */}
+              
             </Route>
 
             <Route exact path="/groups">
+              
               <Groups/>
+              
             </Route>
 
             <Route exact path="/events">
+              
               <Events events={events} setEvents={setEvents} upcoming={upcoming} setUpcoming={setUpcoming} filter={filter} setFilter={setFilter}/>
+              
             </Route>
-            <Route exact path="/events/upcoming">
-              <UpcomingEvents upcoming={upcoming} setUpcoming={setUpcoming}/>
-            </Route>
+           
 
             <Route path="/friends">
               <Friends user={user}/>
             </Route>
           </Switch>
           </div>
+          <div className="rightbar-top">
+            <UpcomingEvents upcoming={upcoming} setUpcoming={setUpcoming}/>
+
+            {visible && <Chat />}
+          </div>
+          
         </div>
       </Router>
 

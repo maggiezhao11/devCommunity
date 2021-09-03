@@ -1,17 +1,20 @@
-.button {
-  align-items: flex-end;
-  text-align: center;
+.list-group .table tbody {
+  font-family: sans-serif;
 }
 
 
 
 .events-button {
-  margin-top: 80px;
+  margin-top: 8px;
   margin-left: 30px;
+  font-weight: bold;
 }
 
 .table-event {
-  margin-top: 20px;;
+  margin-top: 10px;
+  thead {
+    color: white;
+  }
 }
 
 .event-name {
@@ -19,17 +22,64 @@
   text-align: center;
   font-weight: bold;
   font-family: sans-serif;
+  color:#687177;
   
 }
 
-.bg-primary {
+.event-img {
+  img {
+    border-radius: 5%;
+    
+  }
+  
+}
+
+.group-tr {
+  background-color: white;
+  color:#1877f2;
+  font-size: 20px;
   text-align: center;
-   
+  border-style: solid;
+  border-color: #1877f2;
+  border-bottom-width:3px;
+  border-top-width:2px;
 }
 
 
-.list-group .table tbody {
-  font-family: sans-serif;
+
+
+
+.date-event {
+  background-color: #1877f2;
+  text-align: center;
+  border-radius:20%;
+  max-width:70%;
+  margin-left: 20px;
+  
+  
+  .date-event-month{
+    background-color: white;
+    border-style: solid;
+    border-color: #1877f2;
+    color:#1877f2;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    border-width: 3px;
+    
+    
+  }
+  .date-event-day {
+    color: white;
+    font-size:35px;
+    font-weight: bold;
+  }
+}
+
+.event-description {
+  margin-left: 5px;
+  margin-right: 8px;
+  color:#687177;
 }
 
 
