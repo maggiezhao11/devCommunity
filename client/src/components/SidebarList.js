@@ -49,21 +49,7 @@ function SidebarList({toggle}) {
     <div className="Sidebar">
       <ul className="SidebarList">
           {list}
-        {/* {SidebarData.map((val, key) => {
-          return (
-          <NavLink activeClassName="active" className="sidebar_link" to ={val.link}>
-          <li key={key} className="row"> 
-           <div className='icon'>{val.icon}</div> 
-            <div className="title">{val.title}</div> 
-          </li>
-          </NavLink>
-          )
-        })}  */}
-         <li
-              className="row"
-              //chat onClick is for later toggle chat popup window
-              onClick={()=> toggle()}
-          > 
+         <li className="row" onClick={()=> toggle()}> 
             <div id='icon'><ChatIcon /></div> <div id="title">Live Chat Room</div>
           </li>
       </ul>

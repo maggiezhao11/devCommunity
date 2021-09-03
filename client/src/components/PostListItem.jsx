@@ -5,7 +5,7 @@ import './postListItem.scss';
 
 
 function PostListItem(props) {
-  const { id, content, first_name, photo, avatar, deletePost} = props;
+  const { id, content, first_name, photo, avatar, deletePost, user_id} = props;
   
   const [like, setLike] = useState(0)
   const [isLiked, setIsLiked] = useState(false);
@@ -50,7 +50,7 @@ function PostListItem(props) {
         </div>
         <div className="postBottomRight">
           <Create className="commentIcon" />
-          <Delete className="deleteIcon" onClick={() => deletePost(id)} />
+          <Delete className="deleteIcon" onClick={() => deletePost(user_id, id)} />
         </div>
       </div>
     </div>

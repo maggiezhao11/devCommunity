@@ -8,6 +8,7 @@ function PostForm({submit, user}) {
   const avatar = user.avatar
 
   const [content, setContent] = useState("");
+  
 
   const handleTyping = (event) => {
     setContent(event.target.value)

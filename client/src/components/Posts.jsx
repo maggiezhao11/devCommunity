@@ -10,6 +10,7 @@ function Posts(props) {
   // console.log("posts line 10 props:", props);
   const {user} = props;
   const [posts, setPosts] = useState([]);
+  const [error, setError] = useState("you are not doing right!");
 
 function addPost(post) {
   // return axios.post(`http://localhost:3002/posts/${id}`, {post}) 
@@ -22,6 +23,21 @@ function addPost(post) {
   })
 
 }
+
+  //add validation 
+function validate(user_id, id) {
+  console.log("user_id", user_id)
+  console.log("user.id", user.id);
+  if (user.id !== user_id) {
+    setError("You can not delete this post!!!!!!!!!!!!!!!");
+    return;
+  } else {
+    setError("");
+    deletePost(id);
+  }
+}
+
+
 
 function deletePost(post) {
   // return axios.post(`http://localhost:3002/posts/${id}`, {post}) 
@@ -57,8 +73,9 @@ function deletePost(post) {
   return (
     <div className="posts">
       <div className="postsWrapper"></div>
+      <span>{error}</span>
       <PostForm submit={addPost} user={props.user} />
-      <PostList posts={posts} deletePost={deletePost}/>
+      <PostList posts={posts} deletePost={validate}/>
     </div>
   )
 }

@@ -13,6 +13,7 @@ function PostList(props) {
       avatar={post.avatar}
       photo={post.photo}
       deletePost={props.deletePost}
+      user_id={post.user_id}
     /> 
   })
 
