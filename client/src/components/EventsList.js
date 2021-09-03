@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import './eventsList.scss';
 import moment from 'moment';
@@ -6,9 +6,7 @@ import moment from 'moment';
 
 const EventsList = (props) => {
   //const [events, setEvents] = useState([]);
-  const { filter, events, setEvents, setUpcoming, upcoming } = props;
-  
-  
+  const {  events, setUpcoming, upcoming } = props;
 
   const handleJoin = (elem) =>{
     //console.log('elem---', elem)
@@ -35,7 +33,7 @@ const EventsList = (props) => {
           <thead>
             <tr className="group-tr">
               <th scope="col" width="30%">Name</th>
-              <th scope="col" width="50%" >Description</th>
+              <th scope="col" width="60%" >Description</th>
               <th scope="col" width="10%">Date</th>
             </tr>
           </thead>
@@ -45,7 +43,7 @@ const EventsList = (props) => {
 
               <tr key={elem.id}>
                 <td className="event-img">
-                  <img src={elem.photo} className="img-fluid" alt="Responsive image"></img>
+                  <img src={elem.photo} className="img-fluid" alt="Responsive" ></img>
                   <div className="event-name">
                     {elem.name}
                   </div>

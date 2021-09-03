@@ -13,7 +13,6 @@ import Login from './components/Login';
 import Nav from './components/Nav';
 import Chat from './components/Chat';
 import UpcomingEvents from './routes/UpcomingEvents';
-import UpcomingEventsList from './components/UpcomingEventsList';
 import Devcommunity from './apis/Devcommunity';
 
 
@@ -91,18 +90,12 @@ useEffect(() => {
         return response.data;
       });
 
-
-      } catch(err){
-        
-      }
+      } catch(err){}
 
   }
   fetchData();
 
 }, []);
-
-
-
 
   return (
     <div className="App">
@@ -143,9 +136,7 @@ useEffect(() => {
               <Events events={events} setEvents={setEvents} upcoming={upcoming} setUpcoming={setUpcoming} filter={filter} setFilter={setFilter}/>
               
             </Route>
-            {/* <Route exact path="/events/upcoming">
-              
-            </Route> */}
+           
 
             <Route path="/friends">
               <Friends user={user}/>

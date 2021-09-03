@@ -56,7 +56,7 @@ const GroupsList = (props) => {
             {groups.map((elem, index) => (
               <tr key={elem.id}>
                 <td className="group-img">
-                  <img src={elem.photo} className="img-fluid" alt="Responsive image"></img>
+                  <img src={elem.photo} className="img-fluid" alt="Responsive"></img>
                   <br></br>
                   <div className="group-name">
                     {elem.name}

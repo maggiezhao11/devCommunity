@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import Devcommunity from '../apis/Devcommunity';
+import React from 'react';
 import "./updateEventList.scss";
 import moment from 'moment';
 import EventIcon from '@material-ui/icons/Event';
 
 function UpcomingEventsList(props) {
   
-  const {upcoming, setUpcoming} = props;
+  const {upcoming} = props;
   //const {upcoming} = props;
   
-
 
   return (
     <div className="container">
