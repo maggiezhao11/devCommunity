@@ -6,8 +6,8 @@ const Events = (props) => {
   
   const {events, setEvents, setUpcoming, filter, upcoming, setFilter} = props;
   return (
-    <div>
-      <FilterButton filter={filter} setFilter={setFilter}/>
+    <div className="middle-container">
+      <FilterButton filter={filter} setFilter={setFilter} headerName="Events"/>
       <EventsList filter={filter} events={events} setEvents={setEvents} setUpcoming={setUpcoming} upcoming={upcoming}/>
     </div>
   )

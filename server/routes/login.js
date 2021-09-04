@@ -13,7 +13,13 @@ module.exports = (db) => {
     const query = await db.query(`select * from users where users.email = $1;`, [req.body.email])
     console.log("line 22:", query.rows[0]);
     req.session.user_id = query.rows[0].id; //added this line to sync with react app for user_id for testing app
-        res.json(query.rows[0])
+    res.json(query.rows[0])
+    // const generateAccessToken = (user) => {
+    //   return jwt.sign({ id: user.id}, "mySecretJWTKey", {
+    //     expiresIn: "10m",
+    //   });
+    // };
+    // res.json({user: query.rows[0], token: generateAccessToken })
      
    // res.redirect('/');
   });

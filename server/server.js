@@ -66,13 +66,6 @@ app.use('/events', events(db));
 app.use('/login', login(db));
 
 
-const generateAccessToken = (user) => {
-  return jwt.sign({ id: user.id}, "mySecretJWTKey", {
-    expiresIn: "10m",
-  });
-};
-
-
 app.get("/", (req, res) => {
   
     res.send("ok");

@@ -1,7 +1,14 @@
 .posts {
-  flex: 5.5
+  // flex: 5.5;
+  // width: calc(100vw - 200px - 500px);
 }
 
 .postsWrapper {
   padding: 20px
 }
+
+.postList {
+  width:90%;
+  margin-left: 32px
+}
+

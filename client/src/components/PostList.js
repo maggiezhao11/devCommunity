@@ -13,14 +13,15 @@ function PostList(props) {
       avatar={post.avatar}
       photo={post.photo}
       deletePost={props.deletePost}
+      user_id={post.user_id}
     /> 
   })
 
   return (
     <div className="postList">
-      <ul className="postListItem">
+      <div className="postListItem">
         {postItem}
-      </ul> 
+      </div> 
     </div>
   )
 }

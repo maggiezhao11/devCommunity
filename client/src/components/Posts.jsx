@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react';
 import PostForm from './PostForm';
 import PostList from './PostList';
 import axios from 'axios';
+import {toast} from 'react-toastify';
 import './posts.scss';
+
 
 
 
@@ -12,16 +14,28 @@ function Posts(props) {
   const [posts, setPosts] = useState([]);
 
 function addPost(post) {
+  console.log("post", post);
   // return axios.post(`http://localhost:3002/posts/${id}`, {post}) 
-  return axios.post("http://localhost:3002/posts", {
-    user_id: 1,
-    content: post 
-  })
+  return axios.post("/posts/", {content: post})
   .then(() => {
     getPostsData(user); 
   })
 
 }
+
+  //add validation 
+function validate(user_id, id) {
+  console.log("user_id", user_id)
+  console.log("user.id", user.id);
+  if (user.id !== user_id) {
+    toast.error("You can not delete this post!!!!!!!!!!!!!!!");
+    return;
+  } else {
+    deletePost(id);
+  }
+}
+
+
 
 function deletePost(post) {
   // return axios.post(`http://localhost:3002/posts/${id}`, {post}) 
@@ -55,10 +69,10 @@ function deletePost(post) {
   }, [user]);
 
   return (
-    <div className="posts">
+    <div className="posts middle-container" >
       <div className="postsWrapper"></div>
       <PostForm submit={addPost} user={props.user} />
-      <PostList posts={posts} deletePost={deletePost}/>
+      <PostList posts={posts} deletePost={validate}/>
     </div>
   )
 }
