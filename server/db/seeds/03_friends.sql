@@ -13,5 +13,6 @@ INSERT INTO friends (user1_id, user2_id) VALUES
 (2, 3),
 (7, 2),
 (5, 6),
-(5, 8);
+(5, 8),
+(1, 2);
 

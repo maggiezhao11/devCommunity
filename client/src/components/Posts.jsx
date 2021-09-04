@@ -41,7 +41,7 @@ function deletePost(post) {
   // return axios.post(`http://localhost:3002/posts/${id}`, {post}) 
   console.log("this is from delete post", post);
   // return axios.delete("http://localhost:3002/posts/"+ post, {post})
-  return axios.delete(`http://localhost:3002/posts/${post}`) 
+  return axios.delete(`/posts/${post}`) 
   .then(() => {
     getPostsData(user); 
   })
@@ -52,7 +52,7 @@ function deletePost(post) {
     if(user && user.id) {
     // axios.get(`http://localhost:3002/posts?user_id=${id}`)
     // hard coded url is only for test cases
-    axios.get("http://localhost:3002/posts")
+    axios.get("/posts")
     // axios.get("http://localhost:3002/posts?user_id=1")
       .then(res => {
         // console.log("It is working");

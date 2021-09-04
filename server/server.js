@@ -17,6 +17,7 @@ app.use(cookieSession({
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors({origin: true, credentials: true}));
+// app.use(cors());
 app.use(express.urlencoded())
 
 

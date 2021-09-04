@@ -1,7 +1,13 @@
 import "./nav.scss";
-import { Search, LocationOn, Chat, Notifications } from "@material-ui/icons";
+import { LocationOn, Chat, Notifications } from "@material-ui/icons";
 
-export default function Nav({user}) {
+export default function Nav({user, weather}) {
+  // const weatherDescription = weather.weather[0].main;
+  const temperatureC = Math.round(weather.temp);
+
+  console.log("weather from nav line 6:", weather);
+  console.log("weather.weather from nav line 6:", weather.weather);
+  // console.log("weather.weather[0].main from nav line 6:", weather.weather[0]);
   return (
     <div className="navContainer">
       <div className="navLeft">
@@ -24,15 +30,17 @@ export default function Nav({user}) {
         <div className="navIcons">
           <div className="navIconItem">
             <LocationOn />
-            <span className="navIconBadge">city</span>
+            <span className="navIconBadge">city: Toronto </span>
           </div>
           <div className="navIconItem">
             <Chat />
-            <span className="navIconBadge">weather</span>
+            {weather && weather.weather && weather.weather[0] ?  <span className="navIconBadge">weather: {weather.weather[0].main}  </span>
+            : ""}
+           
           </div>
           <div className="navIconItem">
             <Notifications />
-            <span className="navIconBadge">temperature</span>
+            <span className="navIconBadge">temperature: {temperatureC} °C</span>
           </div>
         </div>
         <img src={user.avatar} alt="" className="navImg"/>
