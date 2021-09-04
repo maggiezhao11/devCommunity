@@ -64,7 +64,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       let response
-      if (filter) {
+      if (filter && filter != 'all') {
         response = await Devcommunity.post("/events/filter", { topic: filter });
       } else {
         response = await Devcommunity.get("/events");

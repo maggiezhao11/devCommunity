@@ -14,7 +14,7 @@ const GroupsList = (props) => {
     const fetchData = async () => {
       try {
         let response
-        if (filter) {
+        if (filter && filter != 'all') {
           response = await Devcommunity.post("/groups/filter", { topic: filter });
         } else {
           response = await Devcommunity.get("/groups");

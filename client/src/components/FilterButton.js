@@ -31,6 +31,7 @@ const FilterButton = (props) => {
           <form className="form">
             <select className="custom-select my-1 mr-sm-2" onChange={handleChange}>
               <option selected>Topic</option>
+              <option value="all">All</option>
               <option value="technology">Technology</option>
               <option value="travel & outdoor">Travel & Outdoor</option>
               <option value="parents & family">Parents & Family</option>

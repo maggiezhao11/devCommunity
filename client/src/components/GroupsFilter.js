@@ -28,6 +28,7 @@ const GroupsFilter = (props) => {
 
             <select className="custom-select-group" onChange={handleChange}>
               <option selected>Topic</option>
+              <option value="all">All</option>
               <option value="technology">Technology</option>
               <option value="travel & outdoor">Travel & Outdoor</option>
               <option value="parents & family">Parents & Family</option>
