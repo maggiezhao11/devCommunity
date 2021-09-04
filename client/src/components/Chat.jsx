@@ -30,6 +30,7 @@ function Chat() {
           </div>
           <div>
             {/* <Avatar src="/broken-image.jpg" /> */}
+            
             <input
               type="text"
               placeholder="Type your nickname..."
@@ -39,6 +40,7 @@ function Chat() {
             />
           </div>
           <div>
+            
             <input
               type="text"
               placeholder="Type Room ID..."
