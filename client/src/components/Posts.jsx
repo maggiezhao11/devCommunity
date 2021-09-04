@@ -69,7 +69,7 @@ function deletePost(post) {
   }, [user]);
 
   return (
-    <div className="posts">
+    <div className="posts middle-container" >
       <div className="postsWrapper"></div>
       <PostForm submit={addPost} user={props.user} />
       <PostList posts={posts} deletePost={validate}/>

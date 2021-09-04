@@ -19,9 +19,9 @@ function PostList(props) {
 
   return (
     <div className="postList">
-      <ul className="postListItem">
+      <div className="postListItem">
         {postItem}
-      </ul> 
+      </div> 
     </div>
   )
 }

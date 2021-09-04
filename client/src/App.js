@@ -128,9 +128,7 @@ useEffect(() => {
             </Route>
 
             <Route exact path="/groups">
-              
               <Groups/>
-              
             </Route>
 
             <Route exact path="/events">
