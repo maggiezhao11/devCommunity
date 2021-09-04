@@ -66,7 +66,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       let response
-      if (filter && filter != 'all') {
+      if (filter && filter !== 'all') {
         response = await Devcommunity.post("/events/filter", { topic: filter });
       } else {
         response = await Devcommunity.get("/events");
@@ -91,6 +91,7 @@ useEffect(() => {
         
         return response.data;
       });
+      
 
       } catch(err){}
 
@@ -121,22 +122,20 @@ useEffect(() => {
             <Route path="/home">
               <Home />
               
-              <Posts user={user} />
-              
+              <Posts user={user} />         
               {/* //loading information */}
               
             </Route>
 
             <Route exact path="/groups">
+            
               <Groups/>
             </Route>
-
             <Route exact path="/events">
-              
-              <Events events={events} setEvents={setEvents} upcoming={upcoming} setUpcoming={setUpcoming} filter={filter} setFilter={setFilter}/>
+            
+              <Events events={events} setEvents={setEvents} upcoming={upcoming} setUpcoming={setUpcoming} filter={filter} setFilter={setFilter}/>  
               
             </Route>
-           
 
             <Route path="/friends">
               <Friends user={user}/>
@@ -144,7 +143,7 @@ useEffect(() => {
           </Switch>
           </div>
           <div className="rightbar-top">
-            <UpcomingEvents upcoming={upcoming} setUpcoming={setUpcoming}/>
+             <UpcomingEvents upcoming={upcoming} setUpcoming={setUpcoming}/>
 
             {visible && <Chat />}
           </div>

@@ -35,11 +35,11 @@
 
 .SidebarList .row:hover {
   cursor: pointer;
-  background-color: goldenrod;
+  background-color: rgb(136, 214, 136);//goldenrod
 }
 
 .SidebarList .active .row {
-  background-color: pink;
+  background-color: rgb(240, 240, 142);//pink
 }
 
 .sidebar_link {

@@ -1,5 +1,5 @@
 import "./nav.scss";
-import { Search, LocationOn, Chat, Notifications } from "@material-ui/icons";
+import { LocationOn, Chat, Notifications } from "@material-ui/icons";
 
 export default function Nav({user}) {
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Devcommunity from '../apis/Devcommunity';
 import "./groupsList.scss";
-import Loading from './Loading'; 
+
 
 
 const GroupsList = (props) => {
@@ -15,7 +15,7 @@ const GroupsList = (props) => {
     const fetchData = async () => {
       try {
         let response
-        if (filter && filter != 'all') {
+        if (filter && filter !== 'all') {
           response = await Devcommunity.post("/groups/filter", { topic: filter });
         } else {
           response = await Devcommunity.get("/groups");
