@@ -4,9 +4,12 @@ import "./groupsList.scss";
 
 
 const GroupsList = (props) => {
-  const [groups, setGroups] = useState([]);
+  const [groups, setGroups] = useState([
+
+  ]);
   
   const { filter } = props;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -18,13 +21,16 @@ const GroupsList = (props) => {
         }
 
         setGroups(response.data);
-
+  
       } catch (err) {
 
       }
     }
+
     fetchData();
   }, [filter]);
+
+
 
   const handleJoin = function(index) {
     const groupsFromState = groups;

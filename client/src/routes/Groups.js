@@ -4,10 +4,12 @@ import GroupsFilter from '../components/GroupsFilter';
 
 const Groups = () => {
   const [filter, setFilter] = useState("");
+
+
   return (
     <div>
       <GroupsFilter filter={filter} setFilter={setFilter}/>
-      <GroupsList filter={filter}/>
+     <GroupsList filter={filter} /> 
     </div>
   )
 }
