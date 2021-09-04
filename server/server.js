@@ -35,12 +35,21 @@ io.on("connection", (socket) => {
     socket.join(data);
     console.log(`user with ID: ${socket.id} joined room: ${data}`);
 
+    socket.on("send_message", (msg) => {
+      console.log(`received: ${msg}`)
+      socket.emit("receive_message", msg);
+      socket.to(data).emit("receive_message", msg);
+    });
+
+
   });
 
   socket.on("send_message", (msg) => {
     console.log(`received: ${msg}`)
     //send message to everyone in all rooms as a back up plan
     socket.emit("receive_message", msg);
+
+    socket.send(msg);
     // socket.to(data.room).emit("receive_message", msg);
 
   });

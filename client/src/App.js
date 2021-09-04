@@ -61,7 +61,7 @@ useEffect(() => {
 
 
 
-// create a page component to display language / sidebar
+
 useEffect(() => {
   const fetchData = async () => {
     try {
