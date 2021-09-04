@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Devcommunity from '../apis/Devcommunity';
 import "./groupsList.scss";
+import Loading from './Loading'; 
 
 
 const GroupsList = (props) => {
-  const [groups, setGroups] = useState([
-
-  ]);
+  const [groups, setGroups] = useState([]);
+  
+     // const [loading, setLoading] = useState(true);
   
   const { filter } = props;
 
@@ -21,7 +22,8 @@ const GroupsList = (props) => {
         }
 
         setGroups(response.data);
-  
+        // setTimeout(()=> {setLoading(false)}, 1000);
+
       } catch (err) {
 
       }
@@ -45,16 +47,15 @@ const GroupsList = (props) => {
 
   return (
     <div className="container">
-
-
       <div className="list-group">
+        {/* <div>{!loading ?   */}
+
         <table className="table table-hover table-group">
           <thead>
             <tr className="group-tr">
               <th scope="col" >Name</th>
               {/* <th scope="col" >Name</th> */}
-              <th scope="col" >Description</th>
-              
+              <th scope="col" >Description</th>          
             </tr>
           </thead>
           <tbody>
@@ -67,8 +68,6 @@ const GroupsList = (props) => {
                   <div className="group-name">
                     {elem.name}
                   </div>
-                  
-                  
                 </td>
                 {/* <td >
                   
@@ -99,6 +98,7 @@ const GroupsList = (props) => {
             </tr>
           </tbody>
         </table>
+        {/* // : <Loading className="loading" />}</div> */}
       </div>
 
 

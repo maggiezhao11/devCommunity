@@ -23,14 +23,14 @@ const FilterButton = (props) => {
       
       <div className="event-filter">
         <div >
-          <h4>Filter: </h4>
+          {/* <h4>Filter: </h4> */}
         </div>
    
         <div className="container">
         
           <form className="form">
             <select className="custom-select my-1 mr-sm-2" onChange={handleChange}>
-              <option selected>Topic</option>
+              <option defaultValue>Topic</option>
               <option value="technology">Technology</option>
               <option value="travel & outdoor">Travel & Outdoor</option>
               <option value="parents & family">Parents & Family</option>
@@ -42,7 +42,7 @@ const FilterButton = (props) => {
 
         </div>
         <div>
-          <h1 className="font-weight-light text-events">Events</h1>
+          <h1 className="font-weight-light text-events">{props.headerName}</h1>
         </div>
       </div>
     </div>
