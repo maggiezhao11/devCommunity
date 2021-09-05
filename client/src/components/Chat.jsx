@@ -25,38 +25,51 @@ function Chat() {
     <div className="chatContainer">
       {!showChat ? (
         <div className="joinChatContainer">
-          <div>
+          <div className="joinChatHeader"> 
             <h3>Join A Chat</h3>
           </div>
-          <div>
-            {/* <Avatar src="/broken-image.jpg" /> */}
+          <div className="joinChatForm">
+            <form>
+              <div className="form-group row">
+                <label for="username" className="col-sm-2 col-form-label">Nickname</label>
+                <div className="col-sm-10 chatInput">
+                  <input type="text" readonly class="form-control-plaintext" id="username"
+                    type="text"
+                    placeholder="Type your nickname..."
+                    onChange={(event) => {
+                      setUsername(event.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="form-group row">
+                <label for="room" className="col-sm-2 col-form-label">Room</label>
+                <div className="col-sm-10 chatInput">
+                  <input className="form-control" id="room" type="text"
+                    placeholder="Type Room ID..."
+                    onChange={(event) => {
+                      setRoom(event.target.value);
+                    }} />
+                </div>
+              </div>
+              
+            </form>
+          </div> 
+            <div className="chatButton" >
+              <button onClick={() => joinRoom()}>Join A Room</button>
             
-            <input
-              type="text"
-              placeholder="Type your nickname..."
-              onChange={(event) => {
-                setUsername(event.target.value);
-              }}
-            />
           </div>
-          <div>
+
+          
+
+
             
-            <input
-              type="text"
-              placeholder="Type Room ID..."
-              onChange={(event) => {
-                setRoom(event.target.value);
-              }}
-            />
-          </div>
-          <div>
-            <button onClick={() => joinRoom()}>Join A Room</button>
-          </div>
+        
         </div>
       ) : (
         <>
-        <ChatMessageList socket={socket} username={username} room={room} />
-        <ChatMessageForm socket={socket} username={username} room={room} />
+          <ChatMessageList socket={socket} username={username} room={room} />
+          <ChatMessageForm socket={socket} username={username} room={room} />
         </>
       )}
     </div>

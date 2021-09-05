@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import SendIcon from '@material-ui/icons/Send';
+//import SendIcon from '@material-ui/icons/Send';
+import SendRoundedIcon from '@material-ui/icons/SendRounded';
 
 function ChatMessageForm({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -36,7 +37,7 @@ function ChatMessageForm({ socket, username, room }) {
             event.key === "Enter" && sendMessage();
           }}
         />
-        <button onClick={() => sendMessage()} ><SendIcon /></button>
+        <button onClick={() => sendMessage()} ><SendRoundedIcon fontSize="small"/></button>
       </div>
   );
 }
