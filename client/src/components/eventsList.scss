@@ -19,7 +19,7 @@
 
 .event-name {
   margin-top: 2px;
-  text-align: center;
+  //text-align: center;
   font-weight: bold;
   font-family: sans-serif;
   color:#687177;
@@ -28,17 +28,21 @@
 }
 
 .event-img {
+  text-align: center;
   img {
     border-radius: 10px;
     margin-bottom: 5px;
     margin-top: 20px;
     
+    
   }
   
 }
 .img-size {
-  width:80%;
-  height:160px;
+  width:222px;
+  height:125px;//160px
+  position: relative;
+  
 }
 
 .group-tr {
