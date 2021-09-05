@@ -56,7 +56,7 @@ function Chat() {
             </form>
           </div> 
             <div className="chatButton" >
-              <button onClick={() => joinRoom()}>Join A Room</button>
+              <button onClick={() => joinRoom()}>Join</button>
             
           </div>
 

@@ -1,6 +1,14 @@
 .posts {
   // flex: 5.5;
   // width: calc(100vw - 200px - 500px);
+  // margin-left:160px;
+  // margin-right: 220px;
+  position: relative;
+  width: 100%;
+  margin-left: 10%;
+  margin-right: 220px;
+  
+  
 }
 
 .postsWrapper {
@@ -9,6 +17,7 @@
 
 .postList {
   width:90%;
-  margin-left: 32px
+  margin-left: 32px;
+  
 }
 
