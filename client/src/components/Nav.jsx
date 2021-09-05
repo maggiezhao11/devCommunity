@@ -1,6 +1,7 @@
 import "./nav.scss";
 import React from "react";
-import { LocationOn, Chat, Notifications } from "@material-ui/icons";
+import { LocationOn, Cloud } from "@material-ui/icons";
+import { FaTemperatureHigh } from "react-icons/fa";
 
 
 
@@ -46,14 +47,14 @@ export default function Nav({user, weather, city}) {
             <span className="navIconBadge"> {city && `${city}`} </span>
           </div>
           <div className="navIconItem">
-            <Chat />
+            <Cloud />
           {/* the reason why I put weather.weather[0].main here without assigning a variable before hand, is because of async api call data flow. if assign one before, it would cause issue as it would always be undefined. */}
             {weather && weather.weather && weather.weather[0] ?  <span className="navIconBadge">{weather.weather[0].main}  </span>
             : ""}
            
           </div>
           <div className="navIconItem">
-            <Notifications />
+            <FaTemperatureHigh />
             <span className="navIconBadge"> {!isNaN(temperatureC) && `${temperatureC} °C`} </span>
           </div>
         </div>

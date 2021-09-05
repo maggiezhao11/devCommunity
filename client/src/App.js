@@ -1,5 +1,5 @@
 import "./App.scss";
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Welcome from "./components/Welcome";
 import SidebarList from "./components/SidebarList";
@@ -28,7 +28,6 @@ function App() {
   const [events, setEvents] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [filter, setFilter] = useState("");
-  const [location, setLocation] = useState({});
   const [weather, setWeather] = useState([]);
   const [city, setCity] = useState("");
 
@@ -51,7 +50,6 @@ function App() {
           console.log("geolocation is available");
           navigator.geolocation.getCurrentPosition((position) => {
             console.log("line 56 position:", position.coords);
-            setLocation(position.coords);
             resolve(position.coords);
             // console.log(position.coords.longitude);
           });
@@ -62,9 +60,9 @@ function App() {
       });
     };
  
-  const getCityByLocation = (location) => {
-    const latitude = location.latitude;
-    const longitude = location.longitude;
+  const getCityByLocation = (loc) => {
+    const latitude = loc.latitude;
+    const longitude = loc.longitude;
     fetch(
       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
     ).then((data) => {
@@ -77,10 +75,10 @@ function App() {
   }
 
 
-  const getWeatherByLocation = (location) => {
-    console.log("line69 position", location);
-    const latitude = location.latitude;
-    const longitude = location.longitude;
+  const getWeatherByLocation = (loc) => {
+    console.log("line69 position", loc);
+    const latitude = loc.latitude;
+    const longitude = loc.longitude;
 
     fetch(
       `http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API}&units=metric`
@@ -95,10 +93,10 @@ function App() {
 
   useEffect(() => {
     getUserGeoLocation()
-    .then((location) => {
-      console.log("line86", location);
-      getWeatherByLocation(location);
-      getCityByLocation(location);
+    .then((loc) => {
+      console.log("line86", loc);
+      getWeatherByLocation(loc);
+      getCityByLocation(loc);
     })
     //need to remove getUserGeoLocation from the dependency as it keeps calling weather api. will put it back before deploy
   }, []);
