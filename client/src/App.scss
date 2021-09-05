@@ -3,7 +3,7 @@
   height: 100 vh;
   display: flex;
   flex-direction: column;
-  background: lightgrey;
+  
 }
 
 body {
@@ -25,6 +25,8 @@ body {
   // display: flex;
   // flex-direction: row-reverse;
   // justify-content: space-between;
+  margin-left: 10px;
+ 
 }
 
 .middle-container {
