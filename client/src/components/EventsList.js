@@ -45,7 +45,7 @@ const EventsList = (props) => {
 
               <tr key={elem.id} className="eventRow">
                 <td className="event-img">
-                  <img src={elem.photo} className="img-fluid" alt="Responsive" ></img>
+                  <img src={elem.photo} className="img-size" alt="Responsive" ></img>
                   <div className="event-name">
                     {elem.name}
                   </div>

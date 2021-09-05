@@ -26,7 +26,7 @@ function Chat() {
       {!showChat ? (
         <div className="joinChatContainer">
           <div className="joinChatHeader"> 
-            <h3>Join A Chat</h3>
+            <h3> DevChat</h3>
           </div>
           <div className="joinChatForm">
             <form>
