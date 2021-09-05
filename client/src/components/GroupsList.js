@@ -53,9 +53,9 @@ const GroupsList = (props) => {
         <table className="table table-hover table-group">
           <thead>
             <tr className="group-tr">
-              <th scope="col" >Name</th>
+              <th scope="col" width="30%"></th>
               {/* <th scope="col" >Name</th> */}
-              <th scope="col" >Description</th>          
+              <th scope="col" ></th>          
             </tr>
           </thead>
           <tbody>

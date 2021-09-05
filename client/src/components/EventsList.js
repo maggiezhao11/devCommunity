@@ -34,16 +34,16 @@ const EventsList = (props) => {
         <table className="table table-event table-hover">
           <thead>
             <tr className="group-tr">
-              <th scope="col" width="30%">Name</th>
-              <th scope="col" width="60%" >Description</th>
-              <th scope="col" width="10%">Date</th>
+              <th scope="col" width="30%"></th>
+              <th scope="col" width="60%" ></th>
+              <th scope="col" width="10%"></th>
             </tr>
           </thead>
           <tbody>
 
             {events.map(elem => (
 
-              <tr key={elem.id}>
+              <tr key={elem.id} className="eventRow">
                 <td className="event-img">
                   <img src={elem.photo} className="img-fluid" alt="Responsive" ></img>
                   <div className="event-name">

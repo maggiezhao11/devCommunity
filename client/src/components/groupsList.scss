@@ -34,17 +34,27 @@
   text-align: center;
   font-weight: bold;
   color:#687177;
+  margin-bottom: 10px;
   
 }
 
 .group-img {
   img{
-    border-radius: 5%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    
   }
  
 }
 
 .group-description {
   color: #687177;
+ 
+   
+}
+
+.group-description-div {
+  margin-top:20px;
 }
 
