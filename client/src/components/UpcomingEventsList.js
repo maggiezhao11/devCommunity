@@ -1,16 +1,18 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import "./updateEventList.scss";
 import moment from 'moment';
 import EventIcon from '@material-ui/icons/Event';
 
 function UpcomingEventsList(props) {
+  const location = useLocation();
   
   const {upcoming} = props;
   //const {upcoming} = props;
   
 
   return (
-    <div className="container">
+    <div className="container" style={{display: location.pathname === "/" ? "none" : "block" }}>
       
         
       <div className="list-group">

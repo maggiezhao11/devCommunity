@@ -1,12 +1,13 @@
 import "./nav.scss";
 import React from "react";
-import { LocationOn, Cloud } from "@material-ui/icons";
+import { useLocation } from 'react-router-dom';
+import { LocationOn, Cloud} from "@material-ui/icons";
 import { FaTemperatureHigh } from "react-icons/fa";
 
 
-
-
-export default function Nav({user, weather, city}) {
+export default function Nav({user, weather, city, setOpenModal}) {
+  console.log("nav line 9 ", setOpenModal)
+  const location = useLocation();
 
   const temperatureC = Math.round(weather.temp);
 
@@ -23,9 +24,12 @@ export default function Nav({user, weather, city}) {
 
   }
   return (
+    //great way to implement useLocation hook to conditionally render the component in a particular endpoint
+    <div className="navBox" style={{display: location.pathname === "/" ? "none" : "block" }}>
     <div className="navContainer">
       <div className="navLeft">
         <span className="logo">DevCommunity</span>
+        {/* <HomeWork className="openModalBtn"  onClick={() => { setOpenModal(true)}}/> */}
       </div>
       <div className="navCenter">
         {/* <div className="searchbar">
@@ -62,6 +66,7 @@ export default function Nav({user, weather, city}) {
         <img src={user.avatar} alt="" className="navImg"/>
       </div>
     </div>
+  </div>
   );
 
 

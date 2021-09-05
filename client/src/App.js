@@ -15,10 +15,12 @@ import Chat from "./components/Chat";
 import UpcomingEvents from "./routes/UpcomingEvents";
 import Devcommunity from "./apis/Devcommunity";
 import { ToastContainer } from "react-toastify";
+import Modal from "./components/Modal";
 import "react-toastify/dist/ReactToastify.css";
 require('dotenv').config();
 
 const WEATHER_API = process.env.REACT_APP_WEATHER_API_KEY;
+// const WEBSOCKET = process.env.REACT_APP_WEBSOCKET_URL;
 
 //axios call uses ajax. but by default ajax call wont send the cookies session info to browser, then we need to manually add here as another param
 axios.defaults.withCredentials = true;
@@ -30,6 +32,8 @@ function App() {
   const [filter, setFilter] = useState("");
   const [weather, setWeather] = useState([]);
   const [city, setCity] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  console.log("app line 36 ", setModalOpen)
 
   const toggle = () => {
     setVisible(!visible);
@@ -146,14 +150,15 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Nav user={user} weather={weather} city={city}/>
+        {modalOpen && <Modal setOpenModal={setModalOpen} />}
+        < Nav user={user} weather={weather} city={city} setOpenModal={setModalOpen}/>
         <div className="appContainer">
           <SidebarList toggle={toggle} />
 
           <div className="appContainer1">
             <Switch>
               <Route exact path="/">
-                <Welcome />
+                <Welcome/>
               </Route>
 
               <Route exact path="/login">
@@ -162,7 +167,6 @@ function App() {
 
               <Route path="/home">
                 <Home />
-
                 <Posts user={user} />
 
                 {/* //loading information */}
