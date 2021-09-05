@@ -74,7 +74,6 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  
 }
 
 .navIconBadge {
@@ -90,7 +89,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 20px;
 }
 
 .navImg {
@@ -99,4 +98,8 @@
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+}
+
+.navUserName {
+  font-size: 20px;
 }

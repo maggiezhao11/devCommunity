@@ -28,7 +28,7 @@ function App() {
   const [events, setEvents] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [filter, setFilter] = useState("");
-  const [location, setLocation] = useState({});
+  const [position, setPosition] = useState({});
   const [weather, setWeather] = useState([]);
   const [city, setCity] = useState("");
 
@@ -45,13 +45,15 @@ function App() {
   };
 
   //need to wrap this function in memory, using useCallback or useMemo
-  const getUserGeoLocation = () => {
+  const getUserGeoLocation = useCallback(
+    () => {
       return new Promise((resolve, reject) => {
         if ("geolocation" in navigator) {
           console.log("geolocation is available");
           navigator.geolocation.getCurrentPosition((position) => {
+            // doSomething(position.coords.latitude, position.coords.longitude);
             console.log("line 56 position:", position.coords);
-            setLocation(position.coords);
+            setPosition(position.coords);
             resolve(position.coords);
             // console.log(position.coords.longitude);
           });
@@ -60,11 +62,12 @@ function App() {
           reject();
         }
       });
-    };
- 
-  const getCityByLocation = (location) => {
-    const latitude = location.latitude;
-    const longitude = location.longitude;
+    },
+    []
+  )
+  const getCityByLocation = (position) => {
+    const latitude = position.latitude;
+    const longitude = position.longitude;
     fetch(
       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
     ).then((data) => {
@@ -77,10 +80,10 @@ function App() {
   }
 
 
-  const getWeatherByLocation = (location) => {
-    console.log("line69 position", location);
-    const latitude = location.latitude;
-    const longitude = location.longitude;
+  const getWeatherByLocation = (position) => {
+    console.log("line69 position", position);
+    const latitude = position.latitude;
+    const longitude = position.longitude;
 
     fetch(
       `http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API}&units=metric`
@@ -95,13 +98,14 @@ function App() {
 
   useEffect(() => {
     getUserGeoLocation()
-    .then((location) => {
-      console.log("line86", location);
-      getWeatherByLocation(location);
-      getCityByLocation(location);
+    .then((position) => {
+      console.log("line86", position);
+      getWeatherByLocation(position);
+      getCityByLocation(position);
     })
-    //need to remove getUserGeoLocation from the dependency as it keeps calling weather api. will put it back before deploy
-  }, []);
+
+    //need to remove the dependency as it keeps calling weather api. will put it back before deploy
+  }, [getUserGeoLocation]);
 
 
   useEffect(() => {

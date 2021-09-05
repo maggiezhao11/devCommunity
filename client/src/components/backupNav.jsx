@@ -1,13 +1,16 @@
 import "./nav.scss";
-import React from "react";
 import { LocationOn, Chat, Notifications } from "@material-ui/icons";
 
-
-
-
 export default function Nav({user, weather, city}) {
-
+  // const weatherDescription = weather.weather[0].main;
   const temperatureC = Math.round(weather.temp);
+
+  console.log("weather from nav line 6:", weather);
+  console.log("weather.weather from nav line 6:", weather.weather);
+  // console.log("weather.weather[0].main from nav line 6:", weather.weather[0]);
+
+
+  
 
   //conditional rendering part of components
   if (!user || !weather || !city) {
@@ -47,8 +50,7 @@ export default function Nav({user, weather, city}) {
           </div>
           <div className="navIconItem">
             <Chat />
-          {/* the reason why I put weather.weather[0].main here without assigning a variable before hand, is because of async api call data flow. if assign one before, it would cause issue as it would always be undefined. */}
-            {weather && weather.weather && weather.weather[0] ?  <span className="navIconBadge">{weather.weather[0].main}  </span>
+            {weather && weather.weather && weather.weather[0] ?  <span className="navIconBadge">weather: {weather.weather[0].main}  </span>
             : ""}
            
           </div>
@@ -57,7 +59,6 @@ export default function Nav({user, weather, city}) {
             <span className="navIconBadge"> {!isNaN(temperatureC) && `${temperatureC} °C`} </span>
           </div>
         </div>
-        <span className="navUserName"> Hello, {user.first_name} </span>
         <img src={user.avatar} alt="" className="navImg"/>
       </div>
     </div>
