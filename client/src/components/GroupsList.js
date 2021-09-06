@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import Devcommunity from '../apis/Devcommunity';
 import "./groupsList.scss";
-import Loading from './Loading'; 
+
 
 
 const GroupsList = (props) => {
   const [groups, setGroups] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  
+     // const [loading, setLoading] = useState(true);
   
   const { filter } = props;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         let response
-        if (filter) {
+        if (filter && filter !== 'all') {
           response = await Devcommunity.post("/groups/filter", { topic: filter });
         } else {
           response = await Devcommunity.get("/groups");
@@ -26,8 +28,11 @@ const GroupsList = (props) => {
 
       }
     }
+
     fetchData();
   }, [filter]);
+
+
 
   const handleJoin = function(index) {
     const groupsFromState = groups;
@@ -41,16 +46,16 @@ const GroupsList = (props) => {
 
 
   return (
-    <div className="container">
+    <div className="container group-container">
       <div className="list-group">
         {/* <div>{!loading ?   */}
 
         <table className="table table-hover table-group">
           <thead>
             <tr className="group-tr">
-              <th scope="col" >Name</th>
+              <th scope="col" width="30%"></th>
               {/* <th scope="col" >Name</th> */}
-              <th scope="col" >Description</th>          
+              <th scope="col" ></th>          
             </tr>
           </thead>
           <tbody>
@@ -58,7 +63,7 @@ const GroupsList = (props) => {
             {groups.map((elem, index) => (
               <tr key={elem.id}>
                 <td className="group-img">
-                  <img src={elem.photo} className="img-fluid" alt="Responsive"></img>
+                  <img src={elem.photo} className="img-size" alt="Responsive"></img>
                   <br></br>
                   <div className="group-name">
                     {elem.name}

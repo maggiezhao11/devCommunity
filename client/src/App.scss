@@ -1,35 +1,79 @@
+// .App {
+//   width: 100vw;
+//   height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// body {
+//   margin: 0;
+//   padding: 0;
+// }
+
+// .appContainer {
+//   display: flex;
+//   // flex-direction: row;
+//   // justify-content: space-between;
+//   width: 100%;
+//   // margin-top: 80px;
+//   padding: 0;
+// }
+
+// .appContainer1 {
+//   // display: flex;
+//   // flex-direction: row-reverse;
+//   // justify-content: space-between;
+//   width: 100%;
+//   overflow-y: scroll;
+//   margin-top: 80px;
+//   height: calc(100vh - 80px);
+//   overflow-x: hidden;
+// }
+
+// .middle-container {
+//   width: calc(100vw - 200px - 300px);
+// }
+
+
+
 .App {
-  width: 100vw;
-  height: 100 vh;
+  //width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
-
 body {
   margin: 0;
   padding: 0;
+  // overflow-y:scroll;
+  overflow-y:hidden;
 }
-
 .appContainer {
   display: flex;
+  height: calc(100vh - 80px);
   // flex-direction: row;
   // justify-content: space-between;
+
   width: 100%;
-  // margin-top: 80px;
+  margin-top: 100px;
   padding: 0;
 }
-
 .appContainer1 {
   // display: flex;
   // flex-direction: row-reverse;
   // justify-content: space-between;
   width: 100%;
+  margin-left: 10px;
   overflow-y: scroll;
   margin-top: 80px;
   height: calc(100vh - 80px);
   overflow-x: hidden;
 }
-
 .middle-container {
-  width: calc(100vw - 200px - 300px);
+  width: calc(100vw - 200px - 500px);
+}
+.rightbar-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

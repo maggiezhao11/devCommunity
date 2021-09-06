@@ -53,7 +53,7 @@ export default function Welcome() {
         <div className="language-select">
           {/* <div className="d-flex justify-content-end align-items-center language-select-root"> */}
             <div onClick={handleClick} className="home">
-              <HomeIcon className="homeIcon" style={{ fontSize: 20 }} />
+              <HomeIcon className="homeIcon" style={{ fontSize: 30 }} />
             </div>
             <div className="dropdown">
               <button

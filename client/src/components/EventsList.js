@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './eventsList.scss';
 import moment from 'moment';
@@ -6,7 +6,9 @@ import moment from 'moment';
 
 const EventsList = (props) => {
   //const [events, setEvents] = useState([]);
-  const {  events, setUpcoming, upcoming } = props;
+  const { filter, events, setEvents, setUpcoming, upcoming } = props;
+  
+  
 
   const handleJoin = (elem) =>{
     //console.log('elem---', elem)
@@ -15,35 +17,35 @@ const EventsList = (props) => {
     .then(data => {
       setUpcoming(prev => {   
        // console.log('-----', prev)
-        const updatedEvents = [...prev, data.data[0]]   //get previous events, then set it to new event (data.data[0])
+        const updatedEvents = [data.data[0], ...prev]   //get previous events, then set it to new event (data.data[0])
         return updatedEvents
         
       })
     })
     
   }
-
+  
 
   return (
-    <div className="container">
+    <div className="container event-container">
 
 
       <div className="list-group">
         <table className="table table-event table-hover">
           <thead>
             <tr className="group-tr">
-              <th scope="col" width="30%">Name</th>
-              <th scope="col" width="60%" >Description</th>
-              <th scope="col" width="10%">Date</th>
+              <th scope="col" width="30%"></th>
+              <th scope="col" width="60%" ></th>
+              <th scope="col" width="10%"></th>
             </tr>
           </thead>
           <tbody>
 
             {events.map(elem => (
 
-              <tr key={elem.id}>
+              <tr key={elem.id} className="eventRow">
                 <td className="event-img">
-                  <img src={elem.photo} className="img-fluid" alt="Responsive" ></img>
+                  <img src={elem.photo} className="img-size" alt="Responsive" ></img>
                   <div className="event-name">
                     {elem.name}
                   </div>

@@ -14,7 +14,7 @@ function ChatMessageList({ socket, username, room }) {
   return (
     <div className="chat-window">
       <div className="chat-header">
-        <p>Live Chat Room: {room}</p>
+        <p>Chat Room: {room}</p>
       </div>
       <div className="chat-body">
         <ScrollToBottom className="message-container">

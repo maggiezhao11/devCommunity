@@ -18,7 +18,7 @@ const FilterButton = (props) => {
   }
 
   return (
-    <div key="event.id" className="filter-button-custom">
+    <div key="event.id" className="container filter-button-custom">
       
       
       <div className="event-filter">
@@ -31,6 +31,7 @@ const FilterButton = (props) => {
           <form className="form">
             <select className="custom-select my-1 mr-sm-2" onChange={handleChange}>
               <option defaultValue>Topic</option>
+              <option value="all">All</option>
               <option value="technology">Technology</option>
               <option value="travel & outdoor">Travel & Outdoor</option>
               <option value="parents & family">Parents & Family</option>

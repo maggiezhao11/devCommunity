@@ -1,6 +1,11 @@
 .posts {
   // flex: 5.5;
   // width: calc(100vw - 200px - 500px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+    
 }
 
 .postsWrapper {
@@ -8,7 +13,13 @@
 }
 
 .postList {
-  width:90%;
-  margin-left: 32px
+  //width:80%;
+  margin-left: 32px;
+  max-width: 800px;
+  min-width: 500px;
+  
 }
 
+.middle-container {
+  width: calc(100vw - 200px - 500px);
+}

@@ -7,6 +7,6 @@ CREATE TABLE events (
   category_id INT NOT NULL REFERENCES categories(id) ON DELETE CASCADE,
   description TEXT NOT NULL,
   photo VARCHAR(255),
-  date VARCHAR(255) NOT NULL
+  "date"  date NOT NULL
  
 );
