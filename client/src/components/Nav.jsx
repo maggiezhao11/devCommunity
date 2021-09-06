@@ -6,7 +6,6 @@ import { FaTemperatureHigh } from "react-icons/fa";
 
 
 export default function Nav({user, weather, city, setOpenModal}) {
-  console.log("nav line 9 ", setOpenModal)
   const location = useLocation();
 
   const temperatureC = Math.round(weather.temp);

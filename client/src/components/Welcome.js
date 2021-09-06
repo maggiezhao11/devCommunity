@@ -3,6 +3,10 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import cookies from "js-cookie";
 import classNames from "classnames";
+import "./welcome.scss";
+import { useHistory } from "react-router-dom";
+import HomeIcon from '@material-ui/icons/Home';
+
 
 const languages = [
   {
@@ -31,12 +35,17 @@ const GlobeIcon = ({ width = 24, height = 24 }) => (
 );
 
 export default function Welcome() {
+  let history = useHistory();
+  function handleClick() {
+    history.push("/home");
+  }
   const currentLanguageCode = cookies.get("i18next") || "en";
   const { t } = useTranslation();
   return (
-    <div className="container">
+    <div className="welcome-container" >
       <div className="language-select">
         <div className="d-flex justify-content-end align-items-center language-select-root">
+          <div onClick={handleClick} className="home" ><HomeIcon /></div>
           <div className="dropdown">
             <button
               className="btn btn-link dropdown-toggle"

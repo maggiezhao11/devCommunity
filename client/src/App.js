@@ -33,7 +33,6 @@ function App() {
   const [weather, setWeather] = useState([]);
   const [city, setCity] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
-  console.log("app line 36 ", setModalOpen)
 
   const toggle = () => {
     setVisible(!visible);
@@ -151,7 +150,7 @@ function App() {
     <div className="App">
       <Router>
         {modalOpen && <Modal setOpenModal={setModalOpen} />}
-        < Nav user={user} weather={weather} city={city} setOpenModal={setModalOpen}/>
+       { weather.length !== 0 ? < Nav user={user} weather={weather} city={city} setOpenModal={setModalOpen}/> : <Welcome/>}
         <div className="appContainer">
           <SidebarList toggle={toggle} />
 
@@ -167,7 +166,7 @@ function App() {
 
               <Route path="/home">
                 <Home />
-                <Posts user={user} />
+                 <Posts user={user} /> 
 
                 {/* //loading information */}
               </Route>
