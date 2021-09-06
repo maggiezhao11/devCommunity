@@ -8,6 +8,7 @@
   padding-bottom: 20px;
   border-radius: 10px;
   margin-top: 20px;
+  width: 95%;
 }
 
 
@@ -85,7 +86,7 @@
 }
 
 .chat-window {
-  width: 300px;
+  width: 360px;
   height: 420px;
   margin-left: 10%;
   padding-top:10px;
@@ -117,7 +118,7 @@
   border: 2px solid #38a33b;
   background: rgba(236, 235, 221, 0.899);
   border-radius: 15px;
-  width: 360px;
+  width: 100%;
   position: relative;
 }
 .chat-window .chat-body .message-container {
@@ -199,12 +200,13 @@
   display: flex;
   
   
+  
 }
 
 .chat-footer {
   margin-left:50px;
     input {
-      width: 320px;
+      width: 80%;
       border-radius: 10px;
       margin-right: 5px;
       border:none;
