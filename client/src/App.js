@@ -141,14 +141,14 @@ useEffect(() => {
               <Friends user={user}/>
             </Route>
           </Switch>
-          </div>
-          <div className="rightbar-top">
+        </div>
+        <div className="rightbar-top">
              <UpcomingEvents upcoming={upcoming} setUpcoming={setUpcoming}/>
 
             {visible && <Chat />}
-          </div>
-          
         </div>
+          
+      </div>
       </Router>
 
       <ToastContainer position={"top-center"}/>
