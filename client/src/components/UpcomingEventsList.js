@@ -37,7 +37,7 @@ function UpcomingEventsList(props) {
           </thead>
           <tbody className="upcoming-tbody">
 
-            {upcoming.map(elem => (
+            {sortedEvents.map(elem => (
               <tr key={elem.id}>
 
                 <td >
