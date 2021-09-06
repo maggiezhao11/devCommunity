@@ -9,6 +9,7 @@
 body {
   margin: 0;
   padding: 0;
+ 
 }
 
 .appContainer {
@@ -26,10 +27,17 @@ body {
   // flex-direction: row-reverse;
   // justify-content: space-between;
   margin-left: 10px;
-  //width:95%;
- 
+  //width:100%;
+  //display: block;
+
 }
 
-.middle-container {
-  width: calc(100vw - 200px - 500px);
-}
+
+
+.rightbar-top {
+  
+  .container {
+    width: 100%;
+    
+  }
+} 

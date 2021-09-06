@@ -12,8 +12,11 @@
 }
 
 .postList {
-  width:75%;
+  width:70%;
   margin-left: 32px;
   
 }
 
+.middle-container {
+  width: calc(100vw - 200px - 500px);
+}
