@@ -53,23 +53,6 @@ function PostForm({submit, user}) {
       </div>
     </div>
   </div>
-    // <div>
-    //   <section className="new-post">
-    //     <form id="user-input" autoComplete="off" onSubmit={(event) => event.preventDefault()}>
-    //       <input
-    //         className="post__create-input"
-    //         content="content"
-    //         type="text"
-    //         placeholder="What are you thinking about"
-    //         value={content}
-    //         onChange={handleTyping}
-    //       />
-    //       <div>
-    //         <button type="submit">Submit</button>
-    //       </div>
-    //     </form>    
-    //   </section>
-    // </div>
   )
 }
 

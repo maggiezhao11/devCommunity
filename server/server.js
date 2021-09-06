@@ -27,18 +27,27 @@ const io = new Server(server, {
 });
 io.on("connection", (socket) => {
   console.log(`user is connected: ${socket.id}`);
+
 //  socket.to("room1")
+
   socket.on("join_room", (data) => {
     socket.join(data);
     console.log(`user with ID: ${socket.id} joined room: ${data}`);
+
   });
+
   socket.to("data_feed");
+
+
   socket.on("send_message", (msg) => {
     console.log(`received: ${msg}`)
     //send message to everyone in all rooms as a back up plan
     socket.emit("receive_message", msg);
     socket.to(msg.room).emit("receive_message", msg);
+
   });
+
+
   socket.on("disconnect", () => {
     console.log(`user is disconnected: ${socket.id}`)
   });
@@ -48,6 +57,7 @@ const users = require('./routes/users')
 const groups = require('./routes/groups');
 const events = require('./routes/events');
 const login = require('./routes/login');
+
 app.use('/posts', posts(db, io));
 app.use('/users', users(db));
 app.use('/groups', groups(db));

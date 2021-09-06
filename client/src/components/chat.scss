@@ -231,6 +231,10 @@
   font-family: "Open Sans", sans-serif;
 }
 
+.input-border {
+  outline: none !important;
+}
+
 .chat-window .chat-footer button {
   border: 0;
   display: grid;

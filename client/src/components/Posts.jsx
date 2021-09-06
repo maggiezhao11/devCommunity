@@ -4,14 +4,22 @@ import PostList from './PostList';
 import axios from 'axios';
 import {toast} from 'react-toastify';
 import './posts.scss';
+import io from "socket.io-client";
 
-
+const socket = io.connect("http://localhost:3002");
 
 
 function Posts(props) {
   // console.log("posts line 10 props:", props);
   const {user} = props;
   const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    socket.on("newPost", (data) => {
+      console.log("data from posts line 19 :", data);
+      setPosts((list) => [data, ...list]);
+    });
+  }, []);
 
 function addPost(post) {
   console.log("post", post);
@@ -41,7 +49,7 @@ function deletePost(post) {
   // return axios.post(`http://localhost:3002/posts/${id}`, {post}) 
   console.log("this is from delete post", post);
   // return axios.delete("http://localhost:3002/posts/"+ post, {post})
-  return axios.delete(`http://localhost:3002/posts/${post}`) 
+  return axios.delete(`/posts/${post}`) 
   .then(() => {
     getPostsData(user); 
   })
@@ -52,7 +60,7 @@ function deletePost(post) {
     if(user && user.id) {
     // axios.get(`http://localhost:3002/posts?user_id=${id}`)
     // hard coded url is only for test cases
-    axios.get("http://localhost:3002/posts")
+    axios.get("/posts")
     // axios.get("http://localhost:3002/posts?user_id=1")
       .then(res => {
         // console.log("It is working");

@@ -1,11 +1,50 @@
 import "./nav.scss";
-import { LocationOn, Chat, Notifications } from "@material-ui/icons";
+import React, {useEffect} from "react";
+import { useLocation } from 'react-router-dom';
+import { LocationOn, Cloud} from "@material-ui/icons";
+import { FaTemperatureHigh } from "react-icons/fa";
 
-export default function Nav({user}) {
+
+export default function Nav({user, weather, city, setOpenModal}) {
+
+  useEffect(()=> {
+    if(location.pathname !== "/") {
+      document.querySelector("body").style.overflowY = "hidden";
+      document.querySelector(".appContainer").style.marginTop = "80px";
+    }   
+  }, []);
+
+  useEffect(()=> {
+    return () =>{
+      document.querySelector("body").style.overflowY = "scroll";
+      document.querySelector(".appContainer").style.marginTop = "0";
+
+    } 
+  }, []);
+
+  const location = useLocation();
+
+  const temperatureC = Math.round(weather.temp);
+
+  //conditional rendering part of components
+  if (!user || !weather || !city) {
+    return (
+      <div className="navContainer">
+        <div className="navLeft">
+          <span className="logo">DevCommunity</span>
+        </div>
+      </div>
+    );
+
+
+  }
   return (
+    //great way to implement useLocation hook to conditionally render the component in a particular endpoint
+    <div className="navBox" style={{display: location.pathname === "/" ? "none" : "block" }}>
     <div className="navContainer">
       <div className="navLeft">
         <span className="logo">DevCommunity</span>
+        {/* <HomeWork className="openModalBtn"  onClick={() => { setOpenModal(true)}}/> */}
       </div>
       <div className="navCenter">
         {/* <div className="searchbar">
@@ -24,19 +63,27 @@ export default function Nav({user}) {
         <div className="navIcons">
           <div className="navIconItem">
             <LocationOn />
-            <span className="navIconBadge">city</span>
+            <span className="navIconBadge"> {city && `${city}`} </span>
           </div>
           <div className="navIconItem">
-            <Chat />
-            <span className="navIconBadge">weather</span>
+            <Cloud />
+          {/* the reason why I put weather.weather[0].main here without assigning a variable before hand, is because of async api call data flow. if assign one before, it would cause issue as it would always be undefined. */}
+            {weather && weather.weather && weather.weather[0] ?  <span className="navIconBadge">{weather.weather[0].main}  </span>
+            : ""}
+           
           </div>
           <div className="navIconItem">
-            <Notifications />
-            <span className="navIconBadge">temperature</span>
+            <FaTemperatureHigh />
+            <span className="navIconBadge"> {!isNaN(temperatureC) && `${temperatureC} °C`} </span>
           </div>
         </div>
+        <span className="navUserName"> Hello, {user.first_name} </span>
         <img src={user.avatar} alt="" className="navImg"/>
       </div>
     </div>
+  </div>
   );
+
+
+
 }

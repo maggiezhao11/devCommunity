@@ -46,7 +46,10 @@ function PostListItem(props) {
       <div className="postBottom">
         <div className="postBottomLeft">
           <Favorite className={`${isRed}`} onClick={() => likeHandler()}/>
-          <span className="postLikeCounter" > {like} people like it</span>
+          {/* //two ways of conditional rendering */}
+          {like > 0 && <span className="postLikeCounter"> {like} people like it</span>} 
+          {/* {like === 0 ? <span>hello</span> : <span>nothing</span>}  */}
+          
         </div>
         <div className="postBottomRight">
           <Create className="commentIcon" />

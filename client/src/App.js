@@ -18,8 +18,10 @@ import { ToastContainer } from "react-toastify";
 import Modal from "./components/Modal";
 import "react-toastify/dist/ReactToastify.css";
 require('dotenv').config();
+
 const WEATHER_API = process.env.REACT_APP_WEATHER_API_KEY;
 // const WEBSOCKET = process.env.REACT_APP_WEBSOCKET_URL;
+
 //axios call uses ajax. but by default ajax call wont send the cookies session info to browser, then we need to manually add here as another param
 axios.defaults.withCredentials = true;
 function App() {
@@ -31,9 +33,11 @@ function App() {
   const [weather, setWeather] = useState([]);
   const [city, setCity] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+
   const toggle = () => {
     setVisible(!visible);
   };
+
   const userLogin = (email) => {
     // axios.post('http://localhost:3002/login', {email}, {withCredentials: true})
     axios.post("http://localhost:3002/login", { email }).then((res) => {
@@ -57,6 +61,7 @@ function App() {
         }
       });
     };
+ 
   const getCityByLocation = (loc) => {
     const latitude = loc.latitude;
     const longitude = loc.longitude;
@@ -68,7 +73,10 @@ function App() {
         setCity(bodyData.city);
       });
     });
+
   }
+
+
   const getWeatherByLocation = (loc) => {
     console.log("line69 position", loc);
     const latitude = loc.latitude;
@@ -81,7 +89,9 @@ function App() {
         setWeather(bodyData.current);
       });
     });
+
   };
+
   useEffect(() => {
     getUserGeoLocation()
     .then((loc) => {
@@ -91,6 +101,8 @@ function App() {
     })
     //need to remove getUserGeoLocation from the dependency as it keeps calling weather api. will put it back before deploy
   }, []);
+
+
   useEffect(() => {
     // axios.post('http://localhost:3002/login', {email: 'eliza.wong@gmail.com'})
     axios.get("/users/").then((res) => {
@@ -116,6 +128,7 @@ function App() {
     };
     fetchData();
   }, [filter]);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -127,6 +140,7 @@ function App() {
     };
     fetchData();
   }, []);
+  
   return (
     <div className="App">
       <Router>
@@ -139,17 +153,22 @@ function App() {
               <Route exact path="/">
                 <Welcome/>
               </Route>
+
               <Route exact path="/login">
                 <Login userLogin={userLogin} />
               </Route>
+
               <Route path="/home">
                 <Home />
-                 <Posts user={user} />
+                 <Posts user={user} /> 
+
                 {/* //loading information */}
               </Route>
+
               <Route exact path="/groups">
                 <Groups />
               </Route>
+
               <Route exact path="/events">
                 <Events
                   events={events}
@@ -175,4 +194,5 @@ function App() {
     </div>
   );
 }
+
 export default App;

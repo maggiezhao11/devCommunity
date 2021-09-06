@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import GroupsList from '../components/GroupsList';
-
 import FilterButton from '../components/FilterButton';
 
 const Groups = () => {

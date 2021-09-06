@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import "./SidebarList.scss";
 import ChatIcon from '@material-ui/icons/Chat';
 import HomeIcon from '@material-ui/icons/Home';
@@ -34,6 +35,8 @@ const SidebarData = [
 
 function SidebarList({toggle}) {
 
+  const location = useLocation();
+
   const list = SidebarData.map((item, key) => {
     return <SidebarItem
     key={key}
@@ -46,7 +49,7 @@ function SidebarList({toggle}) {
 
 
   return (
-    <div className="Sidebar">
+    <div className="Sidebar" style={{display: location.pathname === "/" ? "none" : "block" }} >
       <ul className="SidebarList">
           {list}
          <li className="row" onClick={()=> toggle()}> 

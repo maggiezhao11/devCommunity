@@ -1,0 +1,49 @@
+.welcome-box {
+  width: 100vw;
+  height: 100vh;
+  overflow-y:hidden;
+  position: relative;
+  overflow-y: hidden;
+
+}
+.welcome-container{
+
+  height: 100%;
+  width: 100%;
+  // background-color: green;
+  opacity: 0.5;
+  flex-direction: column-reverse;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  
+
+}
+
+.welcome-video {
+  object-fit: cover;
+  position:fixed;
+  width: 100vw;
+}
+
+
+.language-select {
+  display: flex;
+  position: absolute; 
+  top:0 ;  
+  left:0 ;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%
+}
+
+.home {
+  cursor: pointer;
+  color: #1877f2;
+}
+
+.homeIcon {
+font-size: 1.75em;
+}
