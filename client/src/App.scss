@@ -2,11 +2,7 @@
   //width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  //width: 100vw;
-  // height: 100vh;
-  
-  
+  flex-direction: column;  
   
 }
 
@@ -32,16 +28,12 @@ body {
   // flex-direction: row-reverse;
   // justify-content: space-between;
   margin-left: 10px;
- 
-  
 
 }
 
 .middle-container {
   width: calc(100vw - 200px - 500px);
 }
-
-
 
 .rightbar-top {
   
