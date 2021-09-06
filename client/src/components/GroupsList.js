@@ -46,7 +46,7 @@ const GroupsList = (props) => {
 
 
   return (
-    <div className="container">
+    <div className="container group-container">
       <div className="list-group">
         {/* <div>{!loading ?   */}
 

@@ -27,7 +27,7 @@ const EventsList = (props) => {
   
 
   return (
-    <div className="container">
+    <div className="container event-container">
 
 
       <div className="list-group">
