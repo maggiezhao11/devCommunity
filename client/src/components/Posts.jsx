@@ -4,14 +4,22 @@ import PostList from './PostList';
 import axios from 'axios';
 import {toast} from 'react-toastify';
 import './posts.scss';
+import io from "socket.io-client";
 
-
+const socket = io.connect("http://localhost:3002");
 
 
 function Posts(props) {
   // console.log("posts line 10 props:", props);
   const {user} = props;
   const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    socket.on("newPost", (data) => {
+      console.log("data from posts line 19 :", data);
+      setPosts((list) => [data, ...list]);
+    });
+  }, []);
 
 function addPost(post) {
   console.log("post", post);

@@ -18,13 +18,13 @@ function ChatMessageList({ socket, username, room }) {
       </div>
       <div className="chat-body">
         <ScrollToBottom className="message-container">
-          {messageList.map((messageContent) => {
+          {messageList.map((messageContent, idx) => {
             return (
               <div
                 className="message"
                 id={username === messageContent.author ? "you" : "other"}
                 //previously using idx as a key, but its better to use something unique from the message.
-                key={messageContent.username + "" + messageContent.time }>
+                key={idx }>
               <ChatMessageListItem {...messageContent}/>
               </div>
             );

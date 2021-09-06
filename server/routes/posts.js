@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = (db) => {
+
+module.exports = (db, io) => {
  
   //create new post by user
   router.post("/", (req, res) => {
@@ -12,8 +13,16 @@ module.exports = (db) => {
     db.query(
         "INSERT INTO posts (content, user_id, photo) values($1, $2, $3) RETURNING * ;", [content, user_id, photo]
       )
-      .then(data => {
-        res.json(data.rows[0]);
+      .then(data => { 
+        const post_id = data.rows[0].id;
+        db.query(
+          `SELECT posts.*, users.first_name, users.avatar FROM posts JOIN users ON users.id = user_id WHERE posts.id = $1 ORDER BY id desc`, [post_id]
+        )
+        .then((data) => {
+          io.emit("newPost", data.rows[0]);
+          res.json(data.rows[0]);
+        })
+        
       })
       .catch(err => {
         res
