@@ -19,7 +19,7 @@ function UpcomingEventsList(props) {
   })
 
   return (
-    <div className="container">
+    <div className="container upcoming-continer">
       
         
       <div className="list-group">
