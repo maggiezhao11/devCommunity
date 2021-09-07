@@ -33,8 +33,8 @@ function Chat() {
               <div className="form-group row">
                 <label for="username" className="col-sm-2 col-form-label">Nickname</label>
                 <div className="col-sm-10 chatInput">
-                  <input type="text" readonly class="form-control-plaintext" id="username"
-                    type="text"
+                  <input type="text" className="form-control-plaintext" id="username"
+                    
                     placeholder="Type your nickname..."
                     onChange={(event) => {
                       setUsername(event.target.value);

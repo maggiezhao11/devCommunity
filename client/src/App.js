@@ -3,7 +3,7 @@ import React, { useEffect, useState} from "react";
 import axios from "axios";
 import Welcome from "./components/Welcome";
 import SidebarList from "./components/SidebarList";
-import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Groups from "./routes/Groups";
 import Events from "./routes/Events";

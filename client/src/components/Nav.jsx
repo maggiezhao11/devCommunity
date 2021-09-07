@@ -1,5 +1,5 @@
 import "./nav.scss";
-import React, {useEffect} from "react";
+import React from "react";
 import { useLocation } from 'react-router-dom';
 import { LocationOn, Cloud} from "@material-ui/icons";
 import { FaTemperatureHigh } from "react-icons/fa";
