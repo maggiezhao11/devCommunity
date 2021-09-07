@@ -7,24 +7,27 @@ import { FaTemperatureHigh } from "react-icons/fa";
 
 export default function Nav({user, weather, city, setOpenModal}) {
 
-  useEffect(()=> {
-    if(location.pathname !== "/") {
-      document.querySelector("body").style.overflowY = "hidden";
-      document.querySelector(".appContainer").style.marginTop = "80px";
-    }   
-  }, []);
+  // useEffect(()=> {
+  //   if(location.pathname !== "/") {
+  //     document.querySelector("body").style.overflowY = "hidden";
+  //     document.querySelector(".appContainer").style.marginTop = "80px";
+  //   }   
+  // }, []);
 
-  useEffect(()=> {
-    return () =>{
-      document.querySelector("body").style.overflowY = "scroll";
-      document.querySelector(".appContainer").style.marginTop = "0";
+  // useEffect(()=> {
+  //   return () =>{
+  //     document.querySelector("body").style.overflowY = "scroll";
+  //     document.querySelector(".appContainer").style.marginTop = "0";
 
-    } 
-  }, []);
+  //   } 
+  // }, []);
 
   const location = useLocation();
 
+  console.log(" nav line 27 location:", location)
+
   const temperatureC = Math.round(weather.temp);
+  if(location.pathname === "/") return null;
 
   //conditional rendering part of components
   if (!user || !weather || !city) {
@@ -40,7 +43,8 @@ export default function Nav({user, weather, city, setOpenModal}) {
   }
   return (
     //great way to implement useLocation hook to conditionally render the component in a particular endpoint
-    <div className="navBox" style={{display: location.pathname === "/" ? "none" : "block" }}>
+    // <div className="navBox" style={{display: location.pathname === "/" ? "none" : "block" }}>
+    <div className="navBox" >
     <div className="navContainer">
       <div className="navLeft">
         <span className="logo">DevCommunity</span>

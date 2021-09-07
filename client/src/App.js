@@ -1,9 +1,9 @@
 import "./App.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import axios from "axios";
 import Welcome from "./components/Welcome";
 import SidebarList from "./components/SidebarList";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
 import Home from "./components/Home";
 import Groups from "./routes/Groups";
 import Events from "./routes/Events";
@@ -25,6 +25,8 @@ const WEATHER_API = process.env.REACT_APP_WEATHER_API_KEY;
 //axios call uses ajax. but by default ajax call wont send the cookies session info to browser, then we need to manually add here as another param
 axios.defaults.withCredentials = true;
 function App() {
+  
+  const location = window.location.pathname;
   const [user, setUser] = useState({}); //do not set up initial state as NULL because JS cannot read property value with NULL. should either () or ({})
   const [visible, setVisible] = useState(false);
   const [events, setEvents] = useState([]);
@@ -33,6 +35,12 @@ function App() {
   const [weather, setWeather] = useState([]);
   const [city, setCity] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+
+
+
+  useEffect(() => {
+    console.log("line 41 window.location.pathname ", window.location.pathname);
+  }, [])
 
   const toggle = () => {
     setVisible(!visible);
@@ -94,6 +102,7 @@ function App() {
 
   };
 
+  console.log("uselocation line 98 app:", location)
   useEffect(() => {
     getUserGeoLocation()
     .then((loc) => {
@@ -150,7 +159,8 @@ function App() {
     <div className="App">
       <Router>
         {modalOpen && <Modal setOpenModal={setModalOpen} />}
-       { weather.length !== 0 ? < Nav user={user} weather={weather} city={city} setOpenModal={setModalOpen}/> : <Welcome/>}
+       {/* { weather.length !== 0 ? < Nav user={user} weather={weather} city={city} setOpenModal={setModalOpen}/> : <Welcome/>} */}
+       < Nav user={user} weather={weather} city={city} setOpenModal={setModalOpen}/>
         <div className="appContainer">
           <SidebarList toggle={toggle} />
 

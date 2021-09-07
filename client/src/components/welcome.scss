@@ -1,22 +1,25 @@
 .welcome-box {
   width: 100vw;
   height: 100vh;
-  overflow-y:hidden;
-  position: relative;
-  overflow-y: hidden;
+  // overflow-y:hidden;
+  // position: relative;
+  position: absolute;
+  top: 0;
+
 
 }
 .welcome-container{
 
   height: 100%;
   width: 100%;
-  // background-color: green;
+  background-color: lightblue;
   opacity: 0.5;
   flex-direction: column-reverse;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
+
   
 
 }
@@ -25,6 +28,7 @@
   object-fit: cover;
   position:fixed;
   width: 100vw;
+  height: 100vh;
 }
 
 

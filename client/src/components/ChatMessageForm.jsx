@@ -29,6 +29,7 @@ function ChatMessageForm({ socket, username, room }) {
   return (
       <div className="chat-footer">
         <input
+        className="input-border"
           type="text"
           value={currentMessage}
           placeholder="What's up..."

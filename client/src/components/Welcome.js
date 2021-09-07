@@ -41,13 +41,17 @@ export default function Welcome() {
   }
   const currentLanguageCode = cookies.get("i18next") || "en";
   const { t } = useTranslation();
+  // const translatedWords = t("welcome_message");
+  let translatedWords = t("welcome_message");
+  console.log("translatedWords", translatedWords);
+  if (translatedWords === "welcome_message") translatedWords = "";
   return (
     <div className="welcome-box">
       <video className="welcome-video" autoPlay loop muted src={Dev} />
       <div className="welcome-container">
         <div >
         {/* <div className="d-flex flex-column align-items-start"> */}
-          <h1 className="font-weight-normal mb-3">{t("welcome_message")}</h1>
+          <h1 className="font-weight-normal mb-3">{translatedWords}</h1>
         </div>
 
         <div className="language-select">
