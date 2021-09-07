@@ -90,7 +90,7 @@ function App() {
     console.log("line69 position", loc);
     const latitude = loc.latitude;
     const longitude = loc.longitude;
-
+    
     fetch(
       `http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API}&units=metric`
     ).then((data) => {
@@ -98,7 +98,10 @@ function App() {
         console.log("weather:", bodyData.current);
         setWeather(bodyData.current);
       });
-    });
+    })
+    .catch((err) => {
+      console.log('error', err)
+    })
 
   };
 
