@@ -45,6 +45,7 @@ function App() {
       return res.data;
     });
   };
+
   //need to wrap this function in memory, using useCallback or useMemo
   const getUserGeoLocation = () => {
       return new Promise((resolve, reject) => {
@@ -81,6 +82,7 @@ function App() {
     console.log("line69 position", loc);
     const latitude = loc.latitude;
     const longitude = loc.longitude;
+    
     fetch(
       `http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API}&units=metric`
     ).then((data) => {
@@ -88,7 +90,10 @@ function App() {
         console.log("weather:", bodyData.current);
         setWeather(bodyData.current);
       });
-    });
+    })
+    .catch((err) => {
+      console.log('error', err)
+    })
 
   };
 
@@ -111,6 +116,7 @@ function App() {
       return res.data;
     });
   }, []);
+
   // create a page component to display language / sidebar
   useEffect(() => {
     const fetchData = async () => {
@@ -123,16 +129,18 @@ function App() {
         } else {
           response = await Devcommunity.get("/events");
         }
+
         setEvents(response.data);
       } catch (err) {}
     };
     fetchData();
   }, [filter]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await Devcommunity.get("/events/upcoming");
+
         setUpcoming((prev) => {
           return response.data;
         });
@@ -140,7 +148,7 @@ function App() {
     };
     fetchData();
   }, []);
-  
+
   return (
     <div className="App">
       <Router>
@@ -148,6 +156,7 @@ function App() {
        { weather.length !== 0 ? < Nav user={user} weather={weather} city={city} setOpenModal={setModalOpen}/> : <Welcome/>}
         <div className="appContainer">
           <SidebarList toggle={toggle} />
+
           <div className="appContainer1">
             <Switch>
               <Route exact path="/">
@@ -179,6 +188,7 @@ function App() {
                   setFilter={setFilter}
                 />
               </Route>
+
               <Route path="/friends">
                 <Friends user={user} />
               </Route>
@@ -186,10 +196,12 @@ function App() {
           </div>
           <div className="rightbar-top">
             <UpcomingEvents upcoming={upcoming} setUpcoming={setUpcoming} />
+
             {visible && <Chat />}
           </div>
         </div>
       </Router>
+
       <ToastContainer position={"top-center"} />
     </div>
   );
