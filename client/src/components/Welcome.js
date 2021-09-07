@@ -51,7 +51,7 @@ export default function Welcome() {
       <div className="welcome-container">
         <div >
         {/* <div className="d-flex flex-column align-items-start"> */}
-          <h1 className="font-weight-normal mb-3">{translatedWords}</h1>
+          <h1 className="welcome-message">{translatedWords}</h1>
         </div>
 
         <div className="language-select">
