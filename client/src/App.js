@@ -3,7 +3,7 @@ import React, { useEffect, useState} from "react";
 import axios from "axios";
 import Welcome from "./components/Welcome";
 import SidebarList from "./components/SidebarList";
-import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Groups from "./routes/Groups";
 import Events from "./routes/Events";
@@ -19,8 +19,9 @@ import Modal from "./components/Modal";
 import "react-toastify/dist/ReactToastify.css";
 require('dotenv').config();
 
-const WEATHER_API = process.env.REACT_APP_WEATHER_API_KEY;
-// const WEBSOCKET = process.env.REACT_APP_WEBSOCKET_URL;
+// const WEATHER_API = process.env.REACT_APP_WEATHER_API_KEY;
+const WEATHER_API = "863e83d14307a779468265863efa8899";
+
 
 //axios call uses ajax. but by default ajax call wont send the cookies session info to browser, then we need to manually add here as another param
 axios.defaults.withCredentials = true;
@@ -90,7 +91,7 @@ function App() {
     console.log("line69 position", loc);
     const latitude = loc.latitude;
     const longitude = loc.longitude;
-
+    
     fetch(
       `http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API}&units=metric`
     ).then((data) => {
@@ -98,7 +99,10 @@ function App() {
         console.log("weather:", bodyData.current);
         setWeather(bodyData.current);
       });
-    });
+    })
+    .catch((err) => {
+      console.log('error', err)
+    })
 
   };
 

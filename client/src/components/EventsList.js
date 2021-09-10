@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import './eventsList.scss';
 import moment from 'moment';
@@ -6,7 +6,7 @@ import moment from 'moment';
 
 const EventsList = (props) => {
   //const [events, setEvents] = useState([]);
-  const { filter, events, setEvents, setUpcoming, upcoming } = props;
+  const {  events, setUpcoming, upcoming } = props;
   
   
 

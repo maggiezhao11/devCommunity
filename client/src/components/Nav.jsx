@@ -1,26 +1,11 @@
 import "./nav.scss";
-import React, {useEffect} from "react";
+import React from "react";
 import { useLocation } from 'react-router-dom';
 import { LocationOn, Cloud} from "@material-ui/icons";
 import { FaTemperatureHigh } from "react-icons/fa";
 
 
 export default function Nav({user, weather, city, setOpenModal}) {
-
-  // useEffect(()=> {
-  //   if(location.pathname !== "/") {
-  //     document.querySelector("body").style.overflowY = "hidden";
-  //     document.querySelector(".appContainer").style.marginTop = "80px";
-  //   }   
-  // }, []);
-
-  // useEffect(()=> {
-  //   return () =>{
-  //     document.querySelector("body").style.overflowY = "scroll";
-  //     document.querySelector(".appContainer").style.marginTop = "0";
-
-  //   } 
-  // }, []);
 
   const location = useLocation();
 
