@@ -5,7 +5,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 import HomeIcon from '@material-ui/icons/Home';
 import EventIcon from '@material-ui/icons/Event';
 import GroupIcon from '@material-ui/icons/Group';
-import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+// import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import SidebarItem from './SidebarItem';
 
 const SidebarData = [
@@ -24,11 +24,11 @@ const SidebarData = [
     icon: <GroupIcon />,
     link: "/groups"
   },
-  {
-    title: "Friends",
-    icon: <SupervisedUserCircleIcon />,
-    link: "/friends"
-  },
+  // {
+  //   title: "Friends",
+  //   icon: <SupervisedUserCircleIcon />,
+  //   link: "/friends"
+  // },
 
 ]
 
