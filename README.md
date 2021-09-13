@@ -32,11 +32,17 @@ npm run local
 
 ## Final Product
 
-!["screenshot of scheduler overview"]()
+!["screenshot of welcome page with bilingual option"](https://github.com/maggiezhao11/devCommunity/blob/master/doc/welcomePage%20bilingual%20option.png)
 
-!["screenshot of interview form"]()
+!["screenshot of home page Nav with real time location and weather"](https://github.com/maggiezhao11/devCommunity/blob/master/doc/topNavBar%20location%20and%20weather%20information.png)
 
-!["screenshot of cancel confirm mode"]()
+!["screenshot of home page post likes"](https://github.com/maggiezhao11/devCommunity/blob/master/doc/post%20likes.png)
+!["screenshot of home page post delete alert"](https://github.com/maggiezhao11/devCommunity/blob/master/doc/delete%20alert.png)
+!["screenshot of home page post emoji"](https://github.com/maggiezhao11/devCommunity/blob/master/doc/post%20emoji.png)
+!["screenshot of home page post live chat room login"](https://github.com/maggiezhao11/devCommunity/blob/master/doc/livechatroom%20login.png)
+!["screenshot of home page post live chat room realtime chat"](https://github.com/maggiezhao11/devCommunity/blob/master/doc/realtime%20live%20chat.png)
+!["screenshot of home page post event and upcoming event"](https://github.com/maggiezhao11/devCommunity/blob/master/doc/event%20and%20upcoming%20event.png)
+!["screenshot of home page post group page"](https://github.com/maggiezhao11/devCommunity/blob/master/doc/groups%20page.png)
 
 ## Getting Started
 
