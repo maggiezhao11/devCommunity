@@ -11,7 +11,7 @@ function PostForm({submit, user}) {
 
   const [content, setContent] = useState("");
   const [isEmojiShow, setIsEmojiShow] = useState(false);
-  const [characterPosition, setCharacterPosition] = useState(false);
+  const [characterPosition, setCharacterPosition] = useState(0);
   const ref = useRef(null);
 
   const toggleEmoji = () => {
@@ -25,7 +25,7 @@ function PostForm({submit, user}) {
     // if (ref.current.selectionStart !== content.length) {
     //   setCharacterPosition(ref.current.selectionStart);
     //   } 
-        setCharacterPosition((cp) => cp + 1);
+        // setCharacterPosition((cp) => cp + 1);
 
    }
    
@@ -35,28 +35,33 @@ function PostForm({submit, user}) {
     // setCharacterPosition(cursor);
     console.log("cursor:", cursor);
     const text = content.slice(0, cursor) + emojiObject.native + content.slice(cursor);
-    console.log("text:", text);
+    // console.log("text:", text);
     setContent(text);
-    setCharacterPosition((cp) => cp + 1);
+    setCharacterPosition(cursor + 2);
+    // setCharacterPosition((cp) => {
+    //   console.log('test: ', cp, ref.current.selectionStart);
+    //   return cp + 1;
+    // });
 
   };
 
-  const onFocus = () => {
-    console.log("ref.current.selectionStart", ref.current.selectionStart);
-    console.log("content.length", content.length);
-    // if (ref.current.selectionStart !== content.length) {
-    //   setCharacterPosition(ref.current.selectionStart);
-    //   } 
+  // const onFocus = () => {
+  //   console.log("ref.current.selectionStart", ref.current.selectionStart);
+  //   // console.log("content.length", content.length);
+  //   // if (ref.current.selectionStart !== content.length) {
+  //   //   setCharacterPosition(ref.current.selectionStart);
+  //   //   } 
 
-  }
+  // }
 
-  if (ref.current) { 
-   ref.current.selectionStart = characterPosition;
-  ref.current.selectionEnd = characterPosition;
-  }
+  // if (ref.current) { 
+  //  ref.current.selectionStart = characterPosition;
+  // ref.current.selectionEnd = characterPosition;
+  // }
 
   useEffect(() => {
-
+    ref.current.selectionStart = characterPosition;
+    ref.current.selectionEnd = characterPosition;
   }, [characterPosition]);
 
   // function handleOnEnter (text) {
@@ -115,8 +120,3 @@ function PostForm({submit, user}) {
 }
 
 export default PostForm
-
-
-
-
-
