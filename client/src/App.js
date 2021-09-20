@@ -71,6 +71,35 @@ function App() {
         }
       });
     };
+
+    //*****normal callback api way to solve these three and no need for useEffect */
+    // const getUserGeoLocation = () => {
+    //     if ("geolocation" in navigator) {
+    //       navigator.geolocation.getCurrentPosition((success) => {
+    //         success((position) => {
+    //           let crd = position.coords;
+    //           let latitude = crd.latitude;
+    //           let longitude = crd.longitude;
+    //             fetch(
+    //               `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+    //             ).then((data) => {
+    //               data.json().then((bodyData) => {
+    //                 setCity(bodyData.city);
+    //               });
+    //             });
+
+    //             fetch(
+    //               `http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API}&units=metric`
+    //             ).then((data) => {
+    //               data.json().then((bodyData) => {
+    //                 setWeather(bodyData.current);
+    //               });
+    //             })
+    //         })
+    //       });
+    //     } 
+    // };
+
  
   const getCityByLocation = (loc) => {
     const latitude = loc.latitude;
